@@ -1,47 +1,21 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
-// https://github.com/microsoft/vscode-dev-containers/tree/v0.224.3/containers/python-3
-{
-	"name": "Python 3",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"context": "..",
-		"args": {
-			"VARIANT": "3.9",
-			"NODE_VERSION": "16"
-		}
-	},
+# See here for image contents: https://github.com/microsoft/vscode-dev-containers/tree/v0.224.3/containers/python-3/.devcontainer/base.Dockerfile
 
-	// Set *default* container specific settings.json values on container create.
-	"settings": {
-		// "python.defaultInterpreterPath": "/usr/local/bin/python",
-		// "python.linting.enabled": true,
-		// "python.linting.pylintEnabled": true,
-		// "python.formatting.autopep8Path": "/usr/local/py-utils/bin/autopep8",
-		// "python.formatting.blackPath": "/usr/local/py-utils/bin/black",
-		// "python.formatting.yapfPath": "/usr/local/py-utils/bin/yapf",
-		// "python.linting.banditPath": "/usr/local/py-utils/bin/bandit",
-		// "python.linting.flake8Path": "/usr/local/py-utils/bin/flake8",
-		// "python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
-		// "python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
-		// "python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-		// "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
-	},
+# [Choice] Python version (use -bullseye variants on local arm64/Apple Silicon): 3, 3.10, 3.9, 3.8, 3.7, 3.6, 3-bullseye, 3.10-bullseye, 3.9-bullseye, 3.8-bullseye, 3.7-bullseye, 3.6-bullseye, 3-buster, 3.10-buster, 3.9-buster, 3.8-buster, 3.7-buster, 3.6-buster
+ARG VARIANT="3.10-bullseye"
+FROM mcr.microsoft.com/vscode/devcontainers/python:0-${VARIANT}
 
-	// Add the IDs of extensions you want installed when the container is created.
-	"extensions": [
-		// "ms-python.python",
-		// "ms-python.vscode-pylance"
-	],
+# [Choice] Node.js version: none, lts/*, 16, 14, 12, 10
+ARG NODE_VERSION="none"
+RUN if [ "${NODE_VERSION}" != "none" ]; then su vscode -c "umask 0002 && . /usr/local/share/nvm/nvm.sh && nvm install ${NODE_VERSION} 2>&1"; fi
 
-	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [5000, 5432, 3000],
+# Install Postgres
+RUN sudo apt update
+RUN sudo apt install postgresql -y && \
+sudo service postgresql start && \
+sudo -u postgres psql -c "CREATE USER vscode WITH PASSWORD 'password';" && \
+sudo -u postgres psql -c "ALTER USER vscode WITH SUPERUSER;" && \
+sudo -u postgres psql -c "CREATE DATABASE vscode WITH OWNER vscode" && \
+sudo -u postgres psql -c "CREATE DATABASE python_project WITH OWNER vscode"
 
-	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pipenv install --dev && cd react-app && npm install",
-	//  Flask python-dotenv SQLAlchemy Flask-SQLAlchemy psycopg2-binary WTForms Flask-WTF Flask-Login
-
-	"postStartCommand": "sudo service postgresql start",
-
-	// Comment out to connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
-	"remoteUser": "vscode"
-}
+# auto configure flask app to connect to internal postgres
+ENV DATABASE_URL=postgresql://vscode:password@localhost/python_project
