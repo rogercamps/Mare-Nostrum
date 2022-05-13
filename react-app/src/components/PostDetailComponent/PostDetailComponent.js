@@ -1,38 +1,40 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, NavLink } from 'react-router-dom';
 import { getPosts } from '../../store/posts';
-import './PostComponent.css'
+import './PostDetailComponent.css'
 
-function PostComponent() {
+function PostDetailComponent() {
   const dispatch = useDispatch();
-  const photo_id = useParams();
   const [users, setUsers] = useState([]);
   const sessionUser = useSelector(state => state.session.user);
-  const posts = useSelector(state => Object.values(state.posts))
-  console.log('==========posts', posts);
+
+  const { postId } = useParams();
+  const post = useSelector(state => state.posts[postId])
+
+  console.log('-----user name', post);
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
 
   return (
     <>
-      <h1>Feed</h1>
+      <h1>Post detail</h1>
       <ul>
         <div className="feed-container">
-          {posts?.map(post => (
-            <Link to={`/post/${post?.id}`} key={post.id}>
-              <li className='post-feed' >
+          {
+            <>
+              <div>
                 <img src={post?.photo_url} alt='' className='post-in-feed' />
+                <p>{post?.user_name.username}</p>
                 <p>{post?.caption}</p>
-              </li>
-            </Link>
-          ))}
+              </div>
+            </>
+          }
         </div>
       </ul>
     </>
   )
 }
 
-
-export default PostComponent;
+export default PostDetailComponent;
