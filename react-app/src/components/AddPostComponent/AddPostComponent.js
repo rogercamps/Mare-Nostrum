@@ -7,7 +7,7 @@ import { addPost } from '../../store/posts'
 
 const AddPostForm = () => {
 
-  const [photo, setPhoto] = useState('');
+  const [photo_url, setPhoto_url] = useState('');
   const [caption, setCaption] = useState('');
   const [users, setUsers] = useState([]);
   const user = useSelector(state => state.session.user);
@@ -26,12 +26,12 @@ const AddPostForm = () => {
     const post = {
       caption,
       author: user.id,
-      photo,
+      photo_url,
     };
     dispatch(addPost(post));
 
     setCaption('');
-    setPhoto('');
+    setPhoto_url('');
     setValidationErrors([]);
     setHasSubmitted(false);
     history.push("/feed");
@@ -40,9 +40,9 @@ const AddPostForm = () => {
   useEffect(() => {
     const errors = [];
     if (!caption.length) errors.push("Enter a valid caption");
-    if (!photo.length) errors.push("Enter a valid image");
+    if (!photo_url.length) errors.push("Enter a valid image");
     setValidationErrors(errors);
-  }, [caption, photo])
+  }, [caption, photo_url])
 
 
   return (
@@ -67,8 +67,8 @@ const AddPostForm = () => {
           <input
             className="add-post-input"
             type="text"
-            value={photo}
-            onChange={(e) => setPhoto(e.target.value)}
+            value={photo_url}
+            onChange={(e) => setPhoto_url(e.target.value)}
           />
         </div>
         <div className="form-add-post-caption">

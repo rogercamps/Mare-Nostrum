@@ -13,11 +13,11 @@ const getSinglePost = (post) => ({
   payload: post
 })
 
-const addSinglePost = (photo_url, caption) => ({
+const addSinglePost = (post) => ({
   type: ADD_POST,
-  photo_url,
-  caption
+  post
 })
+
 
 const deleteSinglePost = (id) =>({
   type: DELETE_POST,
@@ -94,7 +94,7 @@ const postsReducer = (state = initialState, action) => {
     //   return newState;
     case ADD_POST:
       newState = { ...state };
-      newState.posts[action.post.id] = action.post;
+      newState[action.post.id] = action.post;
       return newState;
     case DELETE_POST:
       newState = {...state}
