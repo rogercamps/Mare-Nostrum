@@ -19,5 +19,6 @@ class Post(db.Model):
       'user_id': self.user_id,
       'photo_url': self.photo_url,
       'caption': self.caption,
-      'created_at': self.created_at
+      'created_at': self.created_at,
+      'user_name': self.user.to_dict(),
     }
