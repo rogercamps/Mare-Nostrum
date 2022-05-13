@@ -10,7 +10,6 @@ function PostComponent() {
   const [users, setUsers] = useState([]);
   const sessionUser = useSelector(state => state.session.user);
   const posts = useSelector(state => Object.values(state.posts))
-  console.log('==========posts', posts);
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
