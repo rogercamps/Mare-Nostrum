@@ -7,7 +7,8 @@ class Post(db.Model):
   user_id = db.Column(db.Integer(), db.ForeignKey('users.id'), nullable=False)
   photo_url = db.Column(db.String(500), nullable=False)
   caption = db.Column(db.String(2200))
-  created_at = db.Column(db.DateTime(timezone=True))
+  created_at = db.Column(db.DateTime(timezone=True),nullable=False)
+  # created_at = db.Column(db.DateTime(timezone=True))
 
 
   comments = db.relationship('Comment', back_populates='post')
@@ -19,5 +20,6 @@ class Post(db.Model):
       'user_id': self.user_id,
       'photo_url': self.photo_url,
       'caption': self.caption,
-      'created_at': self.created_at
+      'created_at': self.created_at,
+      'user_name': self.user.to_dict(),
     }
