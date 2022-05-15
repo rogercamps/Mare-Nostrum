@@ -1,8 +1,8 @@
 const GET_POSTS = 'POSTS/GET_PHOTOS';
 const GET_SINGLE_POST = 'POSTS/GET_SINGLE_POST';
-const ADD_POST = 'POSTS/ADD_POST'
-const DELETE_POST = 'POSTS/DELETE_POST'
-const UPDATE_POST = 'POSTS/UPDATE_POST'
+const ADD_POST = 'POSTS/ADD_POST';
+const DELETE_POST = 'POSTS/DELETE_POST';
+const UPDATE_POST = 'POSTS/UPDATE_POST';
 
 const getAllPosts = (posts) => ({
   type: GET_POSTS,
@@ -77,7 +77,6 @@ export const deletePost = (postId) => async dispatch => {
 }
 
 export const updatePost = (post) => async dispatch => {
-  console.log('update thunk ++++++++++++', post);
   const response = await fetch(`/api/posts/${post.postId}`, {
     method: "PUT",
     headers: {
@@ -87,7 +86,6 @@ export const updatePost = (post) => async dispatch => {
   });
   console.log('response thunk updatePost', response);
   if (response.ok) {
-    console.log('is it here? update post response ok');
     const post = await response.json();
     dispatch(updatePostAction(post));
     return post
@@ -105,10 +103,6 @@ const postsReducer = (state = initialState, action) => {
       newState = {}
       action.payload.forEach(posts => newState[posts.id] = posts);
       return newState;
-    // case GET_POSTS:
-    //   newState = { ...state }
-    //   action.payload.forEach(posts => newState[posts.id] = posts);
-    //   return { ...newState, ...state };
     case GET_SINGLE_POST:
       newState = {}
       newState[action.post.id] = action.post

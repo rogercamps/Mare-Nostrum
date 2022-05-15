@@ -5,7 +5,7 @@ def seed_posts():
     post_1 = Post(
       user_id= 1,
       photo_url='https://i0.heartyhosting.com/www.surfer.com/wp-content/uploads/2019/12/greg-long.jpg?resize=2000%2C1333&ssl=1',
-      caption='North Shore action the past week with @rosswilliamshawaii and friends. ')
+      caption='North Shore action the past week with @rosswilliamshawaii and friends.')
 
     post_2 = Post(
       user_id= 1,
@@ -30,12 +30,6 @@ def seed_posts():
 
     db.session.commit()
 
-
-# Uses a raw SQL query to TRUNCATE the users table.
-# SQLAlchemy doesn't have a built in function to do this
-# TRUNCATE Removes all the data from the table, and RESET IDENTITY
-# resets the auto incrementing primary key, CASCADE deletes any
-# dependent entities
 def undo_posts():
     db.session.execute('TRUNCATE posts RESTART IDENTITY CASCADE;')
     db.session.commit()

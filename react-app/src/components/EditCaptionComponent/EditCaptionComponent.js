@@ -39,7 +39,6 @@ const UpdatePostForm = ({post}) => {
 
   return (
     <div className="add-post-form-main-div">
-      <h1>Add Post</h1>
       {hasSubmitted && validationErrors.length > 0 && (
         <div className="errors-info">
           <p>Errors: </p>
