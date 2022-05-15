@@ -10,9 +10,6 @@ class AddPost(FlaskForm):
   user_id = IntegerField("user_id")
   photo_url = StringField("photo_url")
   caption = StringField("caption")
-  # created_at = DateTimeField('created_at', validators=[DataRequired()], default=datetime.datetime.now)
-
-
 
 # fetch(`/api/posts/new`, {
 #     method: "POST",
