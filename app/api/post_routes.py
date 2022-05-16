@@ -36,8 +36,8 @@ def new_post():
 
     if form.validate_on_submit():
         post = Post(
-            photo_url = form.data['photo_url'],
-            caption = form.data['caption'],
+            photo_url = form.photo_url.data,
+            caption = form.caption.data,
             user_id = current_user.id,
             created_at=datetime.datetime.now()
         )

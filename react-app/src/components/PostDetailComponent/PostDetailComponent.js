@@ -4,6 +4,8 @@ import { useParams, useHistory } from 'react-router-dom';
 import { getPosts, deletePost } from '../../store/posts';
 import './PostDetailComponent.css'
 import UpdatePostForm from '../EditCaptionComponent/EditCaptionComponent'
+import CommentsComponent from '../CommentsComponent/CommentsComponent'
+import AddCommentComponent from '../AddCommentComponent/AddCommentComponent'
 
 function PostDetailComponent() {
   const dispatch = useDispatch();
@@ -22,6 +24,7 @@ function PostDetailComponent() {
   useEffect(() => {
     dispatch(getPosts())
   }, [dispatch])
+
 
   return (
     <>
@@ -45,6 +48,8 @@ function PostDetailComponent() {
           </>
         )}
       </div>
+      <AddCommentComponent user_id={sessionUser.id} post_id={postId} />
+      <CommentsComponent postId={postId} />
     </>
   )
 }

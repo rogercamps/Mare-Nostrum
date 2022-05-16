@@ -22,4 +22,5 @@ class Post(db.Model):
       'caption': self.caption,
       'created_at': self.created_at,
       'user_name': self.user.to_dict(),
+      'comments': [comment.to_dict() for comment in self.comments]
     }
