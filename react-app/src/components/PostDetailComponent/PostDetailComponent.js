@@ -28,7 +28,6 @@ function PostDetailComponent() {
 
   return (
     <>
-      <h1>Post detail</h1>
       <div className="feed-container">
         {
           <>

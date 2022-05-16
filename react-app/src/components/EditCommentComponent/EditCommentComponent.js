@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {addComment} from '../../store/comments'
 
-function EditCommentComponent({comment, user_id, post_id}) {
+function EditCommentComponent({commentContent, user_id, post_id}) {
   const dispatch = useDispatch();
-  const [comment, setComment] = useState(comment)
+  const [comment, setComment] = useState(commentContent)
 
   const handleEditComment = (e) => {
     e.preventDefault()

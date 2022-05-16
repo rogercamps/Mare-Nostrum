@@ -13,7 +13,7 @@ function AddCommentComponent({user_id, post_id}) {
       'user_id': user_id,
       'post_id': +post_id
     }
-    console.log('new comment ........', newComment);
+
     dispatch(addComment(newComment))
     setComment('')
   }

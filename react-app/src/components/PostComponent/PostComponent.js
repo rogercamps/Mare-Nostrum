@@ -16,13 +16,12 @@ function PostComponent() {
 
   return (
     <>
-      <h1>Feed</h1>
-      <ul>
+      <ul className="post-feed-ul">
         <div className="feed-container">
           {posts?.map(post => (
             <Link to={`/post/${post?.id}`} key={post.id}>
               <li className='post-feed' >
-                <img src={post?.photo_url} alt='' className='post-in-feed' />
+                <img src={post?.photo_url} alt='' className="post-feed-img"/>
                 <p>{post?.caption}</p>
               </li>
             </Link>
