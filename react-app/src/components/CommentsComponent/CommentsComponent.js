@@ -3,11 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getComments } from '../../store/comments';
 import './CommentsComponent.css'
+import EditCommentComponent from '../EditCommentComponent/EditCommentComponent'
 
 function CommentsComponent({ postId }) {
   const dispatch = useDispatch();
   const comments = useSelector(state => Object.values(state.comments));
-  console.log('------comments component', postId);
   const [comment, setComment] = useState("");
   const [validationErrors, setValidationErrors] = useState([]);
 
@@ -26,6 +26,7 @@ function CommentsComponent({ postId }) {
             <div className="comment-body">
               {comment?.comment}
             </div>
+            <EditCommentComponent updateComment={comment} />
           </div>
         )}
       </div>

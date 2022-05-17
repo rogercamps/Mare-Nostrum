@@ -1,5 +1,6 @@
 from flask import Blueprint, jsonify, request
 from app.forms.comment_form import CommentForm
+from app.forms.comment_edit_form import CommentEditForm
 from app.models import Comment, db
 
 
@@ -29,12 +30,13 @@ def post_comment():
 
 @comment_routes.route('/<int:id>', methods=['PUT'])
 def update_comment(id):
-    updated_comment = request.get_json()
-    # updated_comment = request.get_json(force=True)
+    form = CommentEditForm()
+    form['csrf_token'].data = request.cookies['csrf_token']
     comment = Comment.query.get(id)
-    comment.content = updated_comment['comment']
+    if comment:
+        comment.comment = form.comment.data
     db.session.commit()
-    return  comment.to_dict()
+    return comment.to_dict()
 
 @comment_routes.route('/<int:id>', methods=['DELETE'])
 def delete_comment(id):

@@ -27,8 +27,12 @@ li {
   flex-direction: column;
   border:.9px solid   #cccccc;
   margin: 15px;
+  /* height: 400px; */
+  width: 450px;
 }
 
 .post-feed-img {
   padding-top: 15px;
+  /* object-fit: cover; */
+
 }

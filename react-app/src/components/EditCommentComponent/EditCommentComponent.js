@@ -1,22 +1,41 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {addComment} from '../../store/comments'
+import {editComment} from '../../store/comments'
 
-function EditCommentComponent({commentContent, user_id, post_id}) {
+function EditCommentComponent({updateComment}) {
   const dispatch = useDispatch();
-  const [comment, setComment] = useState(commentContent)
+  // console.log('----------comment', comment);
+  // const [comment, setComment] = useState(commentContent)
+  const [comment, setComment] = useState('')
+  console.log('update comment >>>>>>>', updateComment);
+  // const handleEditComment = (e) => {
+  //   e.preventDefault()
+  //   const newComment = {
+  //     'comment': comment,
+  //     'user_id': user_id,
+  //     'post_id': +post_id
+  //   }
 
-  const handleEditComment = (e) => {
+  const handleEditComment = async (e) => {
     e.preventDefault()
-    const newComment = {
-      'comment': comment,
-      'user_id': user_id,
-      'post_id': +post_id
-    }
-    console.log('new comment ........', newComment);
-    dispatch(addComment(newComment))
-    setComment('')
-  }
+    const updatedComment = { ...updateComment, comment }
+    console.log('updatedComment-----', updatedComment);
+    // if (editComment.length > 0) {
+        await dispatch(editComment(updatedComment))
+        // const commentEditForm = document.getElementById(`commentForm-${commentId}`)
+        setComment('')
+        // commentEditForm.style.display = 'none'
+    // } else {
+    //     alert('comment must not be empty')
+    // }
+}
+
+
+  //     dispatch(updateComment(newComment))
+  //     setComment('')
+
+
+  // }
 
   return (
     <div>

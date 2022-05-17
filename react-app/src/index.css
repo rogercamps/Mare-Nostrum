@@ -49,4 +49,6 @@ a:hover {
 
 #navbar-logo {
   display: flex;
+  align-items: flex-start;
+  /* max-height: ; */
 }
