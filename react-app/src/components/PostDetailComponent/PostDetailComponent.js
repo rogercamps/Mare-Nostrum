@@ -31,7 +31,7 @@ function PostDetailComponent() {
       <div className="feed-container">
         {
           <>
-            <div>
+            <div className="post-detail-div">
               <img src={post?.photo_url} alt='' className='post-in-feed' />
               <div>{post?.user_name.username}</div>
               <div>{post?.caption}</div>
@@ -39,16 +39,16 @@ function PostDetailComponent() {
           </>
         }
       </div>
-      <div>
+      <div className="post-detail-details">
         {sessionUser?.id === post?.user_name.id && (
           <>
             <UpdatePostForm post={post} />
             <button onClick={() => handleDelete(postId)}>Delete post</button>
           </>
         )}
-      </div>
       <AddCommentComponent user_id={sessionUser.id} post_id={postId} />
       <CommentsComponent postId={postId} />
+      </div>
     </>
   )
 }

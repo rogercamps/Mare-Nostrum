@@ -2,3 +2,33 @@ img {
   max-width: 300px;
   max-height: 175px;
 }
+
+.feed-container {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: space-around;
+  max-width: 40%;
+}
+
+.post-detail-div {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  border:.9px solid   #cccccc;
+  margin: 15px;
+  /* height: 400px; */
+  width: 450px;
+}
+
+.post-detail-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  border:.9px solid   #cccccc;
+  margin: 15px;
+  /* height: 400px; */
+  width: 450px;
+}
