@@ -1,7 +1,7 @@
 const GET_COMMENTS = 'comments/GET_ALL_COMMENTS';
 const ADD_COMMENT = 'comments/ADD_COMMENT';
 const UPDATE_COMMENT = 'comments/UPDATE_COMMENT';
-// const DELETE_COMMENT = 'comments/DELETE_COMMENT';
+const DELETE_COMMENT = 'comments/DELETE_COMMENT';
 
 
 const getAllComments = (comments) => ({
@@ -19,10 +19,10 @@ const updateCommentAction = (comment) => ({
   comment
 })
 
-// const deleteSingleComment = (comment) => ({
-//   type: DELETE_COMMENT,
-//   comment
-// })
+const deleteSingleComment = (comment) => ({
+  type: DELETE_COMMENT,
+  comment
+})
 
 
 export const getComments = (post_id) => async (dispatch) => {
@@ -70,16 +70,17 @@ export const editComment = (comment) => async dispatch => {
   }
 }
 
-// export const deleteComment = (commentId) => async dispatch => {
-//   const response = await fetch(`/api/posts/${commentId}`, {
-//     method: "DELETE",
-//   });
-//   if (response.ok) {
-//     dispatch(deleteSingleComment(commentId))
-//   } else {
-//     return "ERROR @ DELETE_COMMENT"
-//   }
-// }
+export const deleteComment = (comment) => async dispatch => {
+  console.log('delete comment hnk commentid', comment.id);
+  const response = await fetch(`/api/comments/${comment.id}`, {
+    method: "DELETE",
+  });
+  if (response.ok) {
+    dispatch(deleteSingleComment(comment))
+  } else {
+    return "ERROR @ DELETE_COMMENT"
+  }
+}
 
 
 const initialState = {};
@@ -99,10 +100,10 @@ const commentReducer = (state = initialState, action) => {
       newState = { ...state };
       newState[action.comment.id] = action.comment;
       return newState;
-    // case DELETE_COMMENT:
-    //   newState = { ...state }
-    //   delete newState[action.comment_id]
-    //   return newState
+    case DELETE_COMMENT:
+      newState = { ...state }
+      delete newState[action.comment_id]
+      return newState
     default:
       return state;
   }

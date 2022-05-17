@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getComments } from '../../store/comments';
-import './CommentsComponent.css'
-import EditCommentComponent from '../EditCommentComponent/EditCommentComponent'
+import './CommentsComponent.css';
+import EditCommentComponent from '../EditCommentComponent/EditCommentComponent';
+import DeleteCommentComponent from '../DeleteCommentComponent/DeleteCommentComponent';
+import { deleteComment } from '../../store/comments'
+
 
 function CommentsComponent({ postId }) {
   const dispatch = useDispatch();
@@ -15,7 +18,12 @@ function CommentsComponent({ postId }) {
     dispatch(getComments(postId))
   }, [dispatch, postId])
 
-
+  const handleDeleteComment = async (e) => {
+    e.preventDefault()
+    const commentId = +e.currentTarget.id
+    await dispatch(deleteComment(commentId))
+  }
+  const sessionUser = useSelector(state => state.session.user)
   return (
     <>
       <h1>Comments</h1>
@@ -27,6 +35,7 @@ function CommentsComponent({ postId }) {
               {comment?.comment}
             </div>
             <EditCommentComponent updateComment={comment} />
+            <DeleteCommentComponent deletedComment={comment} />
           </div>
         )}
       </div>
@@ -36,15 +45,8 @@ function CommentsComponent({ postId }) {
 
 export default CommentsComponent;
 
-
-// <div className="comment-container">
-// <div className="comment-container">
-// {comments.filter(comment => comment.post_id === postId).map(comment =>
-//   <div key={comment?.id} className="comment-index-div">
-//     <span>{comment?.User.username}: </span>
-//     <div className="comment-body">
-//       {comment?.comment}
-//     </div>
-//   </div>
+// {sessionUser && sessionUser?.id === comment?.userId && (
+//   <button onClick={() => handleDeleteComment(comment?.id)} className='post-detail-comment-delete-btn'>
+//     Delete Comment
+//   </button>
 // )}
-// </div>

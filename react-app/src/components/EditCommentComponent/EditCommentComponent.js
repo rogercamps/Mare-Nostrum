@@ -4,17 +4,9 @@ import {editComment} from '../../store/comments'
 
 function EditCommentComponent({updateComment}) {
   const dispatch = useDispatch();
-  // console.log('----------comment', comment);
-  // const [comment, setComment] = useState(commentContent)
   const [comment, setComment] = useState('')
   console.log('update comment >>>>>>>', updateComment);
-  // const handleEditComment = (e) => {
-  //   e.preventDefault()
-  //   const newComment = {
-  //     'comment': comment,
-  //     'user_id': user_id,
-  //     'post_id': +post_id
-  //   }
+
 
   const handleEditComment = async (e) => {
     e.preventDefault()
@@ -30,12 +22,6 @@ function EditCommentComponent({updateComment}) {
     // }
 }
 
-
-  //     dispatch(updateComment(newComment))
-  //     setComment('')
-
-
-  // }
 
   return (
     <div>

@@ -10,13 +10,13 @@ const NavBar = () => {
       <ul className="nav-ul">
         <li className="nav-item" id="navbar-logo">
           <NavLink to='/feed' exact={true} activeClassName='active'>
-            <img src="mare-nostrum-logo.png" alt="Mare Nostrum logo"/>
-            {/* <img src="../../public/mare-nostrum-logo.PNG" alt="Mare Nostrum logo"/> */}
+            {/* <img src="mare-nostrum-logo.png" alt="Mare Nostrum logo"/> */}
+            <img src="/mare-nostrum-logo.PNG" alt="Mare Nostrum logo"/>
           </NavLink>
         </li>
         <li className="nav-item" id="navbar-home">
           <NavLink to='/feed' exact={true} activeClassName='active'>
-          <img src="ig-home-icon.png" alt="Home"/>
+          <img src="/ig-home-icon.png" alt="Home"/>
           {/* <img src="../../public/ig-home-icon.png" alt="Home"/> */}
           </NavLink>
         </li>

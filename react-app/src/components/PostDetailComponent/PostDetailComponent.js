@@ -33,8 +33,8 @@ function PostDetailComponent() {
           <>
             <div>
               <img src={post?.photo_url} alt='' className='post-in-feed' />
-              <p>{post?.user_name.username}</p>
-              <p>{post?.caption}</p>
+              <div>{post?.user_name.username}</div>
+              <div>{post?.caption}</div>
             </div>
           </>
         }
