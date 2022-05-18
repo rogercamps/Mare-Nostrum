@@ -9,7 +9,7 @@ import Popup from 'reactjs-popup';
 
 const AddPostForm = () => {
 
-  const [photo_url, setPhoto_url] = useState('');
+  const [image, setImage] = useState();
   const [caption, setCaption] = useState('');
   const [users, setUsers] = useState([]);
   const user = useSelector(state => state.session.user);
@@ -17,6 +17,11 @@ const AddPostForm = () => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
+  const [imageLoading, setImageLoading] = useState(false);
+  const [errors, setErrors] = useState([]);
+
+  const formData = new FormData();
+
 
   const submitForm = (e) => {
     e.preventDefault();
@@ -25,26 +30,40 @@ const AddPostForm = () => {
     if (validationErrors.length) return 'Error submitting your post'
 
 
-    const post = {
-      caption,
-      author: user.id,
-      photo_url,
-    };
-    dispatch(addPost(post));
+    // const post = {
+    //   caption,
+    //   author: user.id,
+    //   image,
+    // };
+    formData.append('image', image)
+    formData.append('author', user.id)
+    formData.append('caption', caption)
+    dispatch(addPost(formData)).then((res) => {
+      if (!res?.ok) {
+        console.log(res?.errors)
+        setErrors(res?.errors)
+      } else {
+        setErrors([])
+      }
+    })
 
     setCaption('');
-    setPhoto_url('');
+    setImage('');
     setValidationErrors([]);
     setHasSubmitted(false);
     history.push("/feed");
   }
 
+  const updateImage = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+  }
+
   useEffect(() => {
     const errors = [];
     if (!caption.length) errors.push("Enter a valid caption");
-    if (!photo_url.length) errors.push("Enter a valid image");
     setValidationErrors(errors);
-  }, [caption, photo_url])
+  }, [caption, image])
 
 
   return (
@@ -69,9 +88,9 @@ const AddPostForm = () => {
             </label>
             <input
               className="add-post-input"
-              type="text"
-              value={photo_url}
-              onChange={(e) => setPhoto_url(e.target.value)}
+              type="file"
+              accept="image/*"
+              onChange={updateImage}
             />
           </div>
           <div className="form-add-post-caption">

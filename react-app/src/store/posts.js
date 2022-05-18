@@ -49,13 +49,10 @@ export const getPost = (post_id) => async (dispatch) => {
   }
 }
 
-export const addPost = (post) => async dispatch => {
+export const addPost = (formData) => async dispatch => {
   const response = await fetch(`/api/posts/new`, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(post)
+    body: formData
   });
   if (response.ok) {
     const post = await response.json();

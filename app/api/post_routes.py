@@ -5,6 +5,8 @@ from flask_login import login_required, current_user
 from app.models import User, Post, db
 from app.forms.add_post_form import AddPost
 from app.forms.edit_post_form import EditPost
+from app.s3_functions import (upload_file_to_s3, allowed_file, get_unique_filename)
+from app.api.auth_routes import validation_errors_to_error_messages
 
 post_routes = Blueprint('posts', __name__)
 
@@ -33,17 +35,41 @@ def delete_post(id):
 def new_post():
     form = AddPost()
     form['csrf_token'].data = request.cookies['csrf_token']
-
+    print('------>>>>>>>post route', form.data)
     if form.validate_on_submit():
+        if "image" not in request.files:
+            print('------>>> FIRST IF STATEMENT IMAGES')
+            return {"errors": "image required"}, 400
+
+        image = request.files["image"]
+        print('------>>> IMAGE line 44', image)
+
+        if not allowed_file(image.filename):
+            print('------>>> 2nd IF STATEMENT IMAGES')
+            return {"errors": "file type not permitted"}, 400
+
+        image.filename = get_unique_filename(image.filename)
+
+        upload = upload_file_to_s3(image)
+        print('------>>> Upload', upload)
+        if "url" not in upload:
+            print('------>>> 3rd IF STATEMENT IMAGES')
+            # if the dictionary doesn't have a url key
+            # it means that there was an error when we tried to upload
+            # so we send back that error message
+            return upload, 400
+
+        url = upload["url"]
         post = Post(
-            photo_url = form.photo_url.data,
+            photo_url = url,
             caption = form.caption.data,
             user_id = current_user.id,
-            created_at=datetime.datetime.now()
+            created_at = datetime.datetime.now()
         )
         db.session.add(post)
         db.session.commit()
         return post.to_dict()
+    return  {"errors": validation_errors_to_error_messages(form.errors)},401
 
 @post_routes.route('/<int:id>', methods=['PUT'])
 # @login_required
