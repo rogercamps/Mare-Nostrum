@@ -20,7 +20,7 @@ function AddCommentComponent({user_id, post_id}) {
 
   return (
     <div>
-      <form onSubmit={ handleAddComment } >
+      <form onSubmit={ handleAddComment } >Add Comment:
         <textarea className="comment-textarea" value={comment} onChange={(e)=> setComment(e.target.value)}
         />
         <button type="submit" className="">Submit</button>

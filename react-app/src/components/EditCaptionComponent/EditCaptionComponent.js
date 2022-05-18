@@ -53,7 +53,7 @@ const UpdatePostForm = ({post}) => {
         <h5>User Name: {user?.username}</h5>
         <div className="form-add-post-caption">
           <label className="add-post-label" htmlFor="caption">
-            Add a caption:
+            Edit caption:
           </label>
           <input
             className="add-post-input"

@@ -46,8 +46,8 @@ function PostDetailComponent() {
             <button onClick={() => handleDelete(postId)}>Delete post</button>
           </>
         )}
-      <AddCommentComponent user_id={sessionUser.id} post_id={postId} />
       <CommentsComponent postId={postId} />
+      {/* <AddCommentComponent user_id={sessionUser.id} post_id={postId} /> */}
       </div>
     </>
   )

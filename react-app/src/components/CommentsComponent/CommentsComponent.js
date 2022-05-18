@@ -6,6 +6,7 @@ import './CommentsComponent.css';
 import EditCommentComponent from '../EditCommentComponent/EditCommentComponent';
 import DeleteCommentComponent from '../DeleteCommentComponent/DeleteCommentComponent';
 import { deleteComment } from '../../store/comments'
+import AddCommentComponent from '../AddCommentComponent/AddCommentComponent'
 
 
 function CommentsComponent({ postId }) {
@@ -27,6 +28,7 @@ function CommentsComponent({ postId }) {
   return (
     <>
       <h1>Comments</h1>
+      <AddCommentComponent user_id={sessionUser.id} post_id={postId} />
       <div className="comment-container">
         {comments.map(comment =>
           <div key={comment?.id} className="comment-index-div">

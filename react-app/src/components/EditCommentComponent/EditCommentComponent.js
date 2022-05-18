@@ -26,7 +26,7 @@ function EditCommentComponent({updateComment}) {
   return (
     <div>
       <form onSubmit={ handleEditComment } >
-        <textarea className="comment-textarea" value={comment} onChange={(e)=> setComment(e.target.value)}
+        <textarea className="comment-edit-textarea" value={comment} onChange={(e)=> setComment(e.target.value)}
         />
         <button type="submit" className="">update comment</button>
       </form>
