@@ -4,6 +4,8 @@ import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import AddPostForm from './AddPostComponent/AddPostComponent'
 import { useSelector, useDispatch } from 'react-redux';
+import logo from '../images/mare-nostrum-logo.png'
+import ig_logo from '../images/ig-home-icon.png'
 
 const NavBar = () => {
 
@@ -19,13 +21,13 @@ const NavBar = () => {
         <li className="nav-item" id="navbar-logo">
           <NavLink to='/feed' exact={true} activeClassName='active'>
             {/* <img src="react-app/src/images/mare-nostrum-logo.png"/> */}
-            <img src="/mare-nostrum-logo.PNG" alt="Mare Nostrum logo" />
+            <img src={logo} alt="Mare Nostrum logo" />
           </NavLink>
         </li>
         <li className="nav-item" id="navbar-home">
           <NavLink to='/feed' exact={true} activeClassName='active'>
             {/* <img src="/ig-home-icon.png" alt="Home"/> */}
-            <img src="../../images/ig-home-icon.png" alt="Home" />
+            <img src={ig_logo} alt="Home" />
           </NavLink>
         </li>
         <li className="nav-item" id="navbar-login">
