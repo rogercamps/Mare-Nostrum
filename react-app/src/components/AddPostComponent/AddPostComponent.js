@@ -4,6 +4,8 @@ import { useParams, useHistory, NavLink } from 'react-router-dom';
 import { getPosts } from '../../store/posts';
 import './AddPostComponent.css'
 import { addPost } from '../../store/posts'
+import Popup from 'reactjs-popup';
+
 
 const AddPostForm = () => {
 
@@ -57,32 +59,36 @@ const AddPostForm = () => {
           </ul>
         </div>
       )}
-      <form onSubmit={(e) => submitForm(e)}>
-        <h5>User Name: {user?.username}</h5>
-        <div className="form-add-post-photo">
-          <label className="add-post-label" htmlFor="photo">
-            Add Photo URL:
-          </label>
-          <input
-            className="add-post-input"
-            type="text"
-            value={photo_url}
-            onChange={(e) => setPhoto_url(e.target.value)}
-          />
-        </div>
-        <div className="form-add-post-caption">
-          <label className="add-post-label" htmlFor="caption">
-            Add a caption:
-          </label>
-          <input
-            className="add-post-input"
-            type="text"
-            value={caption}
-            onChange={(e) => setCaption(e.target.value)}
-          />
-        </div>
-        <button className="button">Submit</button>
-      </form>
+      <h5>User Name: {user?.username}</h5>
+      <Popup trigger={<button>Add Post</button>} position="right center">
+
+        <form onSubmit={(e) => submitForm(e)}>
+          <div className="form-add-post-photo">
+            <label className="add-post-label" htmlFor="photo">
+              Add Photo URL:
+            </label>
+            <input
+              className="add-post-input"
+              type="text"
+              value={photo_url}
+              onChange={(e) => setPhoto_url(e.target.value)}
+            />
+          </div>
+          <div className="form-add-post-caption">
+            <label className="add-post-label" htmlFor="caption">
+              Add a caption:
+            </label>
+            <input
+              className="add-post-input"
+              type="text"
+              value={caption}
+              onChange={(e) => setCaption(e.target.value)}
+            />
+          </div>
+          <button className="button">Submit</button>
+        </form>
+      </Popup>
+
     </div>
   )
 }

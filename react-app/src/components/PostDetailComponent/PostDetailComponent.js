@@ -35,19 +35,19 @@ function PostDetailComponent() {
               <img src={post?.photo_url} alt='' className='post-in-feed' />
               <div>{post?.user_name.username}</div>
               <div>{post?.caption}</div>
+              {sessionUser?.id === post?.user_name.id && (
+                <>
+                  <UpdatePostForm post={post} />
+                  <button onClick={() => handleDelete(postId)}>Delete post</button>
+                </>
+              )}
             </div>
           </>
         }
       </div>
       <div className="post-detail-details">
-        {sessionUser?.id === post?.user_name.id && (
-          <>
-            <UpdatePostForm post={post} />
-            <button onClick={() => handleDelete(postId)}>Delete post</button>
-          </>
-        )}
-      <CommentsComponent postId={postId} />
-      {/* <AddCommentComponent user_id={sessionUser.id} post_id={postId} /> */}
+        <CommentsComponent postId={postId} />
+        {/* <AddCommentComponent user_id={sessionUser.id} post_id={postId} /> */}
       </div>
     </>
   )

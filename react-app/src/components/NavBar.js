@@ -3,21 +3,29 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import AddPostForm from './AddPostComponent/AddPostComponent'
+import { useSelector, useDispatch } from 'react-redux';
 
 const NavBar = () => {
+
+  const sessionUser = useSelector(state => state.session.user)
+
+
+
   return (
+    <>
+    { sessionUser &&
     <nav className="navbar">
       <ul className="nav-ul">
         <li className="nav-item" id="navbar-logo">
           <NavLink to='/feed' exact={true} activeClassName='active'>
-            {/* <img src="mare-nostrum-logo.png" alt="Mare Nostrum logo"/> */}
-            <img src="/mare-nostrum-logo.PNG" alt="Mare Nostrum logo"/>
+            {/* <img src="react-app/src/images/mare-nostrum-logo.png"/> */}
+            <img src="/mare-nostrum-logo.PNG" alt="Mare Nostrum logo" />
           </NavLink>
         </li>
         <li className="nav-item" id="navbar-home">
           <NavLink to='/feed' exact={true} activeClassName='active'>
-          <img src="/ig-home-icon.png" alt="Home"/>
-          {/* <img src="../../public/ig-home-icon.png" alt="Home"/> */}
+            {/* <img src="/ig-home-icon.png" alt="Home"/> */}
+            <img src="../../images/ig-home-icon.png" alt="Home" />
           </NavLink>
         </li>
         <li className="nav-item" id="navbar-login">
@@ -39,10 +47,11 @@ const NavBar = () => {
           <LogoutButton />
         </li>
         <li>
-        <AddPostForm />
+          <AddPostForm />
         </li>
       </ul>
     </nav>
+    }</>
   );
 }
 
