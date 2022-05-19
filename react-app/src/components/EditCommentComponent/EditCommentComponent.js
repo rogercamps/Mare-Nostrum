@@ -20,17 +20,16 @@ function EditCommentComponent({ updateComment }) {
 
   const handleEditComment = async (e) => {
     e.preventDefault()
-    if (validationErrors.length > 0) return
+    // setHasSubmitted(true)
+    if (validationErrors.length > 0) {
+      return
+    }
     const updatedComment = { ...updateComment, comment }
     // if (editComment.length > 0) {
     await dispatch(editComment(updatedComment))
     // const commentEditForm = document.getElementById(`commentForm-${commentId}`)
-    // setHasSubmitted(true)
     setComment('')
-    // commentEditForm.style.display = 'none'
-    // } else {
-        // alert('comment must not be empty')
-    // }
+
   }
 
   // <div className="error-div">
