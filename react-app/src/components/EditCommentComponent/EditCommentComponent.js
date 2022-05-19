@@ -5,13 +5,12 @@ import {editComment} from '../../store/comments'
 function EditCommentComponent({updateComment}) {
   const dispatch = useDispatch();
   const [comment, setComment] = useState('')
-  console.log('update comment >>>>>>>', updateComment);
+
 
 
   const handleEditComment = async (e) => {
     e.preventDefault()
     const updatedComment = { ...updateComment, comment }
-    console.log('updatedComment-----', updatedComment);
     // if (editComment.length > 0) {
         await dispatch(editComment(updatedComment))
         // const commentEditForm = document.getElementById(`commentForm-${commentId}`)

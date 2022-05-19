@@ -9,8 +9,10 @@ import ig_splash2 from '../../images/ig-splash-2.png'
 import ig_splash3 from '../../images/ig-splash-3.png'
 import github from '../../images/github.png'
 import linkedin from '../../images/linkedin.png'
+import marenostrum_logo from '../../images/mare-nostrum-logo.png'
 import { login } from '../../store/session';
 import './SplashPage.css'
+
 
 
 
@@ -21,15 +23,15 @@ const SplashPage = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  const onLogin = async (e) => {
-    e.preventDefault();
-    const data = await dispatch(login(email, password));
-    if (data) {
-      setErrors(data);
-    } else {
-      history.push('/feed')
-    }
-  };
+  // const onLogin = async (e) => {
+  //   e.preventDefault();
+  //   const data = await dispatch(login(email, password));
+  //   if (data) {
+  //     setErrors(data);
+  //   } else {
+  //     history.push('/feed')
+  //   }
+  // };
 
   const demoUser = (e) => {
     e.preventDefault();
@@ -39,41 +41,44 @@ const SplashPage = () => {
   return (
     <div>
       <div className="container">
-        <div className="splash-image">
-          <h1>Splash Page</h1>
-          <img src={ig_splash1} alt="slideshow 1" />
-        </div>
-        <div>
-          <Popup trigger={<button>Login</button>} modal>
-            <div className="modal">
-              <div className="content">
-                <LoginForm />
+        <section className="splash-mid-section">
+          <div className="splash-image-div">
+            <img src={ig_splash1} className="splash-image" alt="slideshow 1" />
+          </div>
+          <div className="login-signup-div">
+            <Popup trigger={<button className="splash-btn">Login</button>} modal>
+              <div className="modal">
+                <div className="content">
+                  <LoginForm />
+                </div>
               </div>
-            </div>
-          </Popup>
-          <Popup trigger={<button>Signup</button>} modal>
-            <div className="modal">
-              <div className="content">
-                <SignUpForm />
+            </Popup>
+            <Popup trigger={<button className="splash-btn">Signup</button>} modal>
+              <div className="modal">
+                <div className="content">
+                  <SignUpForm />
+                </div>
               </div>
-            </div>
-          </Popup>
-          <button className="btn-demo" onClick={demoUser}>Demo</button>
-        </div>
+            </Popup>
+            <button className="btn-demo splash-btn" onClick={demoUser}>Demo user</button>
+          </div>
+        </section>
       </div>
-      <footer>
-        <p>Developed by Roger Camps</p>
-        <div>
-          <a href="https://github.com/rogercamps" target="_blank" rel="noopener noreferrer">
-            <img border="0" alt="Github" src={github} className="social" />
-          </a>
-        </div>
-        <div>
-          <a href="https://www.linkedin.com/in/rogercamps/" target="_blank" rel="noopener noreferrer" >
-            <img border="0" alt="Linkedin" src={linkedin}  className="social" />
-          </a>
-        </div>
-      </footer>
+      <div className="foot-div">
+        <footer>
+          <p>Developed by Roger Camps</p>
+          <div>
+            <a href="https://github.com/rogercamps" target="_blank" rel="noopener noreferrer">
+              <img border="0" alt="Github" src={github} className="social" />
+            </a>
+          </div>
+          <div>
+            <a href="https://www.linkedin.com/in/rogercamps/" target="_blank" rel="noopener noreferrer" >
+              <img border="0" alt="Linkedin" src={linkedin} className="social" />
+            </a>
+          </div>
+        </footer>
+      </div>
     </div>
   )
 }

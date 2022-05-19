@@ -4,8 +4,6 @@ import {editComment, deleteComment} from '../../store/comments'
 
 function DeleteCommentComponent({deletedComment}) {
   const dispatch = useDispatch();
-  // console.log('----------comment', comment);
-  // const [comment, setComment] = useState(commentContent)
   const [commentDelete, setCommentDelte] = useState('');
 
   const handleDeleteComment = (e) => {

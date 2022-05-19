@@ -32,7 +32,7 @@ function PostDetailComponent() {
         {
           <>
             <div className="post-detail-div">
-              <img src={post?.photo_url} alt='' className='post-in-feed' />
+              <img src={post?.photo_url} className="post-detail-image post-in-feed" alt='' />
               <div>{post?.user_name.username}</div>
               <div>{post?.caption}</div>
               {sessionUser?.id === post?.user_name.id && (

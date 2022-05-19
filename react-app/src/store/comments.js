@@ -50,18 +50,14 @@ export const addComment = (comment) => async dispatch => {
   }
 }
 export const editComment = (comment) => async dispatch => {
-  // console.log('update thunk comment ++++++++++++', comment);
   const response = await fetch(`/api/comments/${comment.id}`, {
-  // const response = await fetch(`/api/posts/${comment.postId}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(comment)
   });
-  // console.log('response thunk update COMMENT', response);
   if (response.ok) {
-    // console.log('is it here? update COMMENT response ok');
     const post = await response.json();
     dispatch(updateCommentAction(comment));
     return post
@@ -71,7 +67,6 @@ export const editComment = (comment) => async dispatch => {
 }
 
 export const deleteComment = (comment) => async dispatch => {
-  console.log('delete comment hnk commentid', comment.id);
   const response = await fetch(`/api/comments/${comment.id}`, {
     method: "DELETE",
   });
