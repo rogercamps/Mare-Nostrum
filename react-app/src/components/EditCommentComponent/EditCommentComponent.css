@@ -14,14 +14,15 @@
 .edit-comment-errors {
   display: relative;
   height: 10px;
-  background-color: red;
+  /* background-color: red; */
 }
 
 .edit-comment-form {
   display: flex;
+  /* flex-direction: column; */
 }
 .errors {
   display: relative;
   height: 10px;
-  background-color: green;
+  /* background-color: green; */
 }

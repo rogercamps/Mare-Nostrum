@@ -1,10 +1,10 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField
-from wtforms.validators import DataRequired, Email, ValidationError
+from wtforms.validators import DataRequired, Email, ValidationError, EqualTo
 from app.models import User
-import re
+# import re
 
-regex = re.compile(r"([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\[[\t -Z^-~]*])")
+# regex = re.compile(r"([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\"([]!#-[^-~ \t]|(\\[\t -~]))+\")@([-!#-'*+/-9=?A-Z^-~]+(\.[-!#-'*+/-9=?A-Z^-~]+)*|\[[\t -Z^-~]*])")
 
 def user_exists(form, field):
     # Checking if user exists
@@ -30,15 +30,16 @@ def password_length_s(form, field):
         raise ValidationError('Password must be 15 characters or less.')
 
 
-def isValid_email(form, field):
-    email = field.data
-    if re.fullmatch(regex, email):
-        return None
-    else:
-        raise ValidationError('Please use a valid email.')
+# def isValid_email(form, field):
+#     email = field.data
+#     if re.fullmatch(regex, email):
+#         return None
+#     else:
+#         raise ValidationError('Please use a valid email.')
 
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists, isValid_email])
-    password = StringField('password', validators=[DataRequired(), password_length_s])
+    email = StringField('email', validators=[DataRequired(), user_exists, Email()])
+    password = StringField('password', validators=[DataRequired(), password_length_s, EqualTo('repeat_password', message="Passwords don't match")])
+    repeat_password = StringField('repeat_password', validators=[DataRequired(), password_length_s])
