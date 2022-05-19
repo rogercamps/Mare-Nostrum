@@ -55,11 +55,6 @@ const SignUpForm = () => {
         <div className="errors" key={ind}>{error}</div>
       ))}
       <div>
-        {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
-        ))}
-      </div>
-      <div>
         <label>User Name</label>
         <input
           type='text'
