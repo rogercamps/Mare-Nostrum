@@ -42,6 +42,12 @@
     background-color: white;
 }
 
+.splash-logo-div {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 35px;
+}
+
 .splash-btn {
   background-color: rgb(25,149,246);
   color: white;

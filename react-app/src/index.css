@@ -18,7 +18,7 @@ button {
 button:focus {outline:0;}
 .navbar {
   background-color: white;
-  display: flex;
+  /* display: flex; */
   color: black;
   width: 100%;
   top: 0;
@@ -44,6 +44,18 @@ a:hover {
 
 }
 
+#nav-home {
+  display: flex;
+  align-items: flex-end;
+}
+
+.navbar-logo {
+  display: flex;
+  /* align-items: flex-start; */
+  /* background-color: red; */
+  height: 35px;
+}
+
 .nav-item {
   display: flex;
   align-items: center;
@@ -51,10 +63,11 @@ a:hover {
   margin: 10px;
 }
 
-#navbar-logo {
+#navbar-logo-id {
   display: flex;
   align-items: flex-start;
   /* max-height: ; */
+
 }
 
 .modal {
@@ -92,4 +105,14 @@ a:hover {
   background: #ffffff;
   border-radius: 18px;
   border: 1px solid #cfcece;
+}
+
+.nav-username {
+  margin-top: 12px;
+}
+
+.nav-items-right {
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
 }

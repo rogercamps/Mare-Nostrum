@@ -17,31 +17,33 @@ const NavBar = () => {
 
   return (
     <>
-    { sessionUser &&
-    <nav className="navbar">
-      <ul className="nav-ul">
-        <li className="nav-item" id="navbar-logo">
-          <NavLink to='/feed' exact={true} activeClassName='active'>
-            <img src={logo} alt="Mare Nostrum logo" />
-          </NavLink>
-        </li>
-        <li className="nav-item" id="navbar-home">
-          <NavLink to='/feed' exact={true} activeClassName='active'>
-            <img src={home_logo} alt="Home" />
-          </NavLink>
-        </li>
-        <li>
-        <p><img src={profile_icon} alt="profile" />{sessionUser?.username}</p>
-        </li>
-        <li>
-          <AddPostForm />
-        </li>
-        <li className="nav-item" id="navbar-logout-button">
-          <LogoutButton />
-        </li>
-      </ul>
-    </nav>
-    }</>
+      {sessionUser &&
+        <nav className="navbar">
+          <ul className="nav-ul">
+            <li className="nav-item" id="navbar-logo-id">
+              <NavLink to='/feed' exact={true} activeClassName='active'>
+                <img src={logo} className="navbar-logo" alt="Mare Nostrum logo" />
+              </NavLink>
+            </li>
+            <div className="nav-items-right">
+              <li className="nav-item" id="navbar-home">
+                <NavLink to='/feed' exact={true} activeClassName='active'>
+                  <img src={home_logo} alt="Home" />
+                </NavLink>
+              </li>
+              <li>
+                <p><img src={profile_icon} alt="profile" /><span className="nav-username">{sessionUser?.username}</span></p>
+              </li>
+              <li>
+                <AddPostForm />
+              </li>
+              <li className="nav-item" id="navbar-logout-button">
+                <LogoutButton />
+              </li>
+            </div>
+          </ul>
+        </nav>
+      }</>
   );
 }
 

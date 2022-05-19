@@ -46,6 +46,9 @@ const SplashPage = () => {
             <img src={ig_splash1} className="splash-image" alt="slideshow 1" />
           </div>
           <div className="login-signup-div">
+          <div className="splash-logo-div">
+            <img src={marenostrum_logo} className="splash-logo" alt="logo" />
+          </div>
             <Popup trigger={<button className="splash-btn">Login</button>} modal>
               <div className="modal">
                 <div className="content">
