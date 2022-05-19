@@ -45,9 +45,11 @@ export const addComment = (comment) => async dispatch => {
   if (response.ok) {
     const comment = await response.json();
     dispatch(addSingleComment(comment));
-  } else {
-    return "ERROR @ ADD_COMMENT"
+  } else if (response.status < 500) {
+    const data = await response.json();
+    return data;
   }
+    return response;
 }
 export const editComment = (comment) => async dispatch => {
   const response = await fetch(`/api/comments/${comment.id}`, {
@@ -61,9 +63,11 @@ export const editComment = (comment) => async dispatch => {
     const post = await response.json();
     dispatch(updateCommentAction(comment));
     return post
-  } else {
-    return "ERROR @ UPDATE_COMMENT"
+  } else if (response.status < 500) {
+    const data = await response.json();
+    return data;
   }
+    return response;
 }
 
 export const deleteComment = (comment) => async dispatch => {

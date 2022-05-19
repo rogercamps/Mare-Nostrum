@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request
 from app.forms.comment_form import CommentForm
 from app.forms.comment_edit_form import CommentEditForm
 from app.models import Comment, db
-
+from app.api.auth_routes import validation_errors_to_error_messages
 
 comment_routes = Blueprint('comments', __name__)
 
@@ -27,16 +27,20 @@ def post_comment():
         db.session.add(comment)
         db.session.commit()
         return comment.to_dict()
+    return  {"errors": validation_errors_to_error_messages(form.errors)},401
 
 @comment_routes.route('/<int:id>', methods=['PUT'])
 def update_comment(id):
     form = CommentEditForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    comment = Comment.query.get(id)
-    if comment:
-        comment.comment = form.comment.data
-    db.session.commit()
-    return comment.to_dict()
+    print('edit route --------++++++', form.data)
+    if form.validate_on_submit():
+        comment = Comment.query.get(id)
+        if comment:
+            comment.comment = form.comment.data
+        db.session.commit()
+        return comment.to_dict()
+    return  {"errors": validation_errors_to_error_messages(form.errors)},401
 
 @comment_routes.route('/<int:id>', methods=['DELETE'])
 def delete_comment(id):

@@ -11,13 +11,6 @@ function EditCommentComponent({ updateComment }) {
   const [errors, setErrors] = useState([]);
 
 
-  useEffect(() => {
-    const errors = [];
-    if (comment.length > 500) errors.push('Comment should be 500 characters or less');
-    if (comment.length < 1) errors.push("Comment must be at least 1 character long");
-    setValidationErrors(errors)
-  }, [comment]);
-
   const handleEditComment = async (e) => {
     e.preventDefault()
     // setHasSubmitted(true)
@@ -25,29 +18,25 @@ function EditCommentComponent({ updateComment }) {
       return
     }
     const updatedComment = { ...updateComment, comment }
-    // if (editComment.length > 0) {
     await dispatch(editComment(updatedComment))
-    // const commentEditForm = document.getElementById(`commentForm-${commentId}`)
-    setComment('')
+      .then((response) => {
+        if (!response.ok) {
+          setErrors(response.errors);
+        } else {
+          setErrors([]);
+        }
+      })
+    setComment('');
 
   }
 
-  // <div className="error-div">
-  // {hasSubmitted && errors.map((error, idx) => (
-  //   <li key={idx}>{error}</li>
-  // ))}
-  // </div>
 
   return (
     <div className="update-comment">
       <form onSubmit={handleEditComment} >
-        {hasSubmitted && validationErrors.length > 0 && (
-          <div>
-            <ul>
-              {validationErrors.map((error, idx) => <li key={idx}>{error}</li>)}
-            </ul>
-          </div>
-        )}
+      {errors?.length > 0 && errors?.map((error, ind) => (
+        <div className="errors" key={ind}>{error}</div>
+      ))}
         <textarea className="comment-edit-textarea" value={comment} onChange={(e) => setComment(e.target.value)}
         />
         <button type="submit" className="">update comment</button>
