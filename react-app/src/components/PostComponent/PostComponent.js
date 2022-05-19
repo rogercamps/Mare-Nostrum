@@ -24,7 +24,7 @@ function PostComponent() {
             <Link to={`/post/${post?.id}`} key={post.id}>
               <li className='post-feed' >
                 <img src={post?.photo_url} alt='' className="post-feed-img"/>
-                <p>{post?.caption}</p>
+                <span className="post-caption">{post?.caption}</span>
               {/* <EditCommentComponent updateComment={comment} /> */}
               </li>
             </Link>

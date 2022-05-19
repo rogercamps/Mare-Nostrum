@@ -1,34 +1,56 @@
+
 .post-detail-image {
   max-width: 300px;
   max-height: 175px;
+  margin-top: 15px;
 }
 
-.feed-container {
+.detail-container {
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
-  justify-content: space-around;
-  max-width: 40%;
+  align-items: center;
+  width: 100vw;
 }
+.detail-nested-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: red; */
 
+}
 .post-detail-div {
+
   display: flex;
-  align-items: center;
-  justify-content: space-around;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   border:.9px solid   #cccccc;
   margin: 15px;
   /* height: 400px; */
   width: 450px;
 }
 
-.post-detail-details {
+.post-detail-div > div:nth-child(3) {
+  padding: 15px;
+}
+.post-detail-comments {
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  flex-direction: column;
+  /* justify-content: center; */
+  /* flex-direction: column; */
   border:.9px solid   #cccccc;
   margin: 15px;
   /* height: 400px; */
   width: 450px;
+  background-color: white;
+}
+
+.post-comment {
+  margin-bottom: 15px;
+  padding: 15px;
+}
+
+.detail-delete-button {
+  margin-bottom: 15px;
 }

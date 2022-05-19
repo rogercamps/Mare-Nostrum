@@ -1,0 +1,14 @@
+.delete-comment > form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.delete-comment-button {
+  position: relative;
+  top: -11px;
+  left: 167px;
+  background-color: red;
+  color: white;
+  border-radius: 3px;
+}

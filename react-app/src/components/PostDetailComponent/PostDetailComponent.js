@@ -28,26 +28,28 @@ function PostDetailComponent() {
 
   return (
     <>
-      <div className="feed-container">
-        {
-          <>
-            <div className="post-detail-div">
-              <img src={post?.photo_url} className="post-detail-image post-in-feed" alt='' />
-              <div>{post?.user_name.username}</div>
-              <div>{post?.caption}</div>
-              {sessionUser?.id === post?.user_name.id && (
-                <>
-                  <UpdatePostForm post={post} />
-                  <button onClick={() => handleDelete(postId)}>Delete post</button>
-                </>
-              )}
-            </div>
-          </>
-        }
-      </div>
-      <div className="post-detail-details">
-        <CommentsComponent postId={postId} />
-        {/* <AddCommentComponent user_id={sessionUser.id} post_id={postId} /> */}
+      <div className="detail-container">
+        <div className="detail-nested-container">
+          {
+            <>
+              <div className="post-detail-div">
+                <img src={post?.photo_url} className="post-detail-image post-in-feed" alt='' />
+                <div>{post?.user_name.username}</div>
+                <div>{post?.caption}</div>
+                {sessionUser?.id === post?.user_name.id && (
+                  <>
+                    <UpdatePostForm post={post} />
+                    <button onClick={() => handleDelete(postId)} className="detail-delete-button">Delete post</button>
+                  </>
+                )}
+              </div>
+            </>
+          }
+          <div className="post-detail-details detail-container">
+            <CommentsComponent className="post-detail-div" postId={postId} />
+          </div>
+          {/* <AddCommentComponent user_id={sessionUser.id} post_id={postId} /> */}
+        </div>
       </div>
     </>
   )

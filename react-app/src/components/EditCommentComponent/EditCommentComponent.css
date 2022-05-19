@@ -1,0 +1,12 @@
+.update-comment> form {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.comment-edit-textarea {
+  position: relative;
+  top: 14px;
+  height: 49px;
+  resize: none;
+}

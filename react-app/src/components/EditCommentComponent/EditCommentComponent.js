@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {editComment} from '../../store/comments'
+import './EditCommentComponent.css';
 
 function EditCommentComponent({updateComment}) {
   const dispatch = useDispatch();
@@ -23,7 +24,7 @@ function EditCommentComponent({updateComment}) {
 
 
   return (
-    <div>
+    <div className="update-comment">
       <form onSubmit={ handleEditComment } >
         <textarea className="comment-edit-textarea" value={comment} onChange={(e)=> setComment(e.target.value)}
         />

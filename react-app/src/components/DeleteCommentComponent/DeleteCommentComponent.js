@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {editComment, deleteComment} from '../../store/comments'
+import './DeleteCommentComponent.css'
 
 function DeleteCommentComponent({deletedComment}) {
   const dispatch = useDispatch();
@@ -12,9 +13,9 @@ function DeleteCommentComponent({deletedComment}) {
 }
 
   return (
-    <div>
+    <div className="delete-comment">
       <form onSubmit={ handleDeleteComment } >
-        <button type="submit" className="">Delete Comment</button>
+        <button type="submit" className="delete-comment-button">Delete Comment</button>
       </form>
     </div>
   )
