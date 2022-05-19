@@ -5,6 +5,7 @@ import { getPosts } from '../../store/posts';
 import './AddPostComponent.css'
 import { addPost } from '../../store/posts'
 import Popup from 'reactjs-popup';
+import add_post_icon from '../../images/New_Post.png'
 
 
 const AddPostForm = () => {
@@ -65,7 +66,6 @@ const AddPostForm = () => {
     setValidationErrors(errors);
   }, [caption, image])
 
-
   return (
     <div className="add-post-form-main-div">
       {hasSubmitted && validationErrors.length > 0 && (
@@ -78,34 +78,35 @@ const AddPostForm = () => {
           </ul>
         </div>
       )}
-      <h5>User Name: {user?.username}</h5>
-      <Popup trigger={<button>Add Post</button>} position="right center">
-
-        <form onSubmit={(e) => submitForm(e)}>
-          <div className="form-add-post-photo">
-            <label className="add-post-label" htmlFor="photo">
-              Add Photo URL:
-            </label>
-            <input
-              className="add-post-input"
-              type="file"
-              accept="image/*"
-              onChange={updateImage}
-            />
+      <Popup trigger={<img src={add_post_icon} alt="Add post" />} modal>
+        <div className="modal">
+          <div className="content">
+            <form onSubmit={(e) => submitForm(e)}>
+              <div className="form-add-post-photo">
+                <label className="add-post-label" htmlFor="photo">
+                </label>
+                <input
+                  className="add-post-input"
+                  type="file"
+                  accept="image/*"
+                  onChange={updateImage}
+                />
+              </div>
+              <div className="form-add-post-caption">
+                <label className="add-post-label" htmlFor="caption">
+                  Add a caption:
+                </label>
+                <input
+                  className="add-post-input"
+                  type="text"
+                  value={caption}
+                  onChange={(e) => setCaption(e.target.value)}
+                />
+              </div>
+              <button className="button">Submit</button>
+            </form>
           </div>
-          <div className="form-add-post-caption">
-            <label className="add-post-label" htmlFor="caption">
-              Add a caption:
-            </label>
-            <input
-              className="add-post-input"
-              type="text"
-              value={caption}
-              onChange={(e) => setCaption(e.target.value)}
-            />
-          </div>
-          <button className="button">Submit</button>
-        </form>
+        </div>
       </Popup>
 
     </div>

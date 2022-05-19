@@ -52,3 +52,43 @@ a:hover {
   align-items: flex-start;
   /* max-height: ; */
 }
+
+.modal {
+  font-size: 12px;
+  box-shadow: 0 0 0 max(100vh, 100vw) rgba(0, 0, 0, .7);
+  background-color: hotpink;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  /* width: 100%; */
+  padding: 10px 5px;
+  /* background-color: hotpink; */
+  border:.9px solid black;
+  padding: 15%;
+  /* border-radius: 4px; */
+}
+.modal > .actions {
+  /* width: 100%; */
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #ffffff;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
