@@ -11,9 +11,9 @@
   resize: none;
 }
 
-.edit-comment-errors {
-  display: relative;
-  height: 10px;
+div.update-comment > form.edit-comment-form >  div.edit-comment-errors {
+  position: absolute;
+  /* height: 10px; */
   /* background-color: red; */
 }
 
@@ -21,8 +21,13 @@
   display: flex;
   /* flex-direction: column; */
 }
-.errors {
-  display: relative;
+div.update-comment > form.edit-comment-form >  div.edit-comment-errors > .errors {
+  position: relative;
+  padding: 10px 10px 16px 10px;
+  border:.9px solid rgb(185, 182, 182);
+  background-color: white;
+  left: 300px;
   height: 10px;
+  top: -62px;
   /* background-color: green; */
 }

@@ -14,9 +14,10 @@ function EditCommentComponent({ updateComment }) {
   const handleEditComment = async (e) => {
     e.preventDefault()
     // setHasSubmitted(true)
-    if (validationErrors.length > 0) {
-      return
-    }
+    // if (validationErrors.length > 0) {
+    //   return
+    // }
+
     const updatedComment = { ...updateComment, comment }
     await dispatch(editComment(updatedComment))
       .then((response) => {
@@ -29,6 +30,11 @@ function EditCommentComponent({ updateComment }) {
     setComment('');
 
   }
+
+
+  useEffect(() => {
+    setErrors([]);
+  }, [comment])
 
 
   return (
