@@ -33,10 +33,12 @@ function EditCommentComponent({ updateComment }) {
 
   return (
     <div className="update-comment">
-      <form onSubmit={handleEditComment} >
-      {errors?.length > 0 && errors?.map((error, ind) => (
-        <div className="errors" key={ind}>{error}</div>
-      ))}
+      <form onSubmit={handleEditComment} className="edit-comment-form">
+        <div className="edit-comment-errors">
+          {errors?.length > 0 && errors?.map((error, ind) => (
+            <div className="errors" key={ind}>{error}</div>
+          ))}
+        </div>
         <textarea className="comment-edit-textarea" value={comment} onChange={(e) => setComment(e.target.value)}
         />
         <button type="submit" className="">update comment</button>

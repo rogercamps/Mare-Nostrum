@@ -10,3 +10,18 @@
   height: 49px;
   resize: none;
 }
+
+.edit-comment-errors {
+  display: relative;
+  height: 10px;
+  background-color: red;
+}
+
+.edit-comment-form {
+  display: flex;
+}
+.errors {
+  display: relative;
+  height: 10px;
+  background-color: green;
+}

@@ -51,6 +51,7 @@ export const addComment = (comment) => async dispatch => {
   }
     return response;
 }
+
 export const editComment = (comment) => async dispatch => {
   const response = await fetch(`/api/comments/${comment.id}`, {
     method: "PUT",

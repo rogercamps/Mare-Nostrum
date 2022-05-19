@@ -33,7 +33,6 @@ def post_comment():
 def update_comment(id):
     form = CommentEditForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print('edit route --------++++++', form.data)
     if form.validate_on_submit():
         comment = Comment.query.get(id)
         if comment:
