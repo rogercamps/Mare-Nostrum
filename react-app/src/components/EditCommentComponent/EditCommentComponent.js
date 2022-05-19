@@ -14,22 +14,22 @@ function EditCommentComponent({ updateComment }) {
   useEffect(() => {
     const errors = [];
     if (comment.length > 500) errors.push('Comment should be 500 characters or less');
-    if (comment.length < 1) errors.push("Comment must be 2 characters or more");
+    if (comment.length < 1) errors.push("Comment must be at least 1 character long");
     setValidationErrors(errors)
   }, [comment]);
 
   const handleEditComment = async (e) => {
     e.preventDefault()
-    setHasSubmitted(true)
     if (validationErrors.length > 0) return
     const updatedComment = { ...updateComment, comment }
     // if (editComment.length > 0) {
     await dispatch(editComment(updatedComment))
     // const commentEditForm = document.getElementById(`commentForm-${commentId}`)
+    // setHasSubmitted(true)
     setComment('')
     // commentEditForm.style.display = 'none'
     // } else {
-    //     alert('comment must not be empty')
+        // alert('comment must not be empty')
     // }
   }
 
