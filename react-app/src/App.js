@@ -35,12 +35,12 @@ function App() {
         <Route exact path="/">
           {user ? <Redirect to="/feed" /> : <SplashPage />}
         </Route>
-        <Route path='/login' exact={true}>
+        {/* <Route path='/login' exact={true}>
           <LoginForm />
         </Route>
         <Route path='/sign-up' exact={true}>
           <SignUpForm />
-        </Route>
+        </Route> */}
         <ProtectedRoute path='/users' exact={true} >
           <UsersList />
         </ProtectedRoute>
@@ -50,12 +50,12 @@ function App() {
         <ProtectedRoute path='/' exact={true} >
           <h1>My Home Page</h1>
         </ProtectedRoute>
-        <Route path='/feed'>
+        <ProtectedRoute path='/feed' exact={true} >
           <PostComponent />
-        </Route>
-        <Route path='/post/:postId'>
+        </ProtectedRoute>
+        <ProtectedRoute path='/post/:postId' exact={true} >
           <PostDetailComponent />
-        </Route>
+        </ProtectedRoute>
       </Switch>
     </BrowserRouter>
   );
