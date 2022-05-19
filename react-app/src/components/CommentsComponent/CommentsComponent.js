@@ -27,7 +27,6 @@ function CommentsComponent({ postId }) {
   const sessionUser = useSelector(state => state.session.user)
   return (
     <>
-      <h1>Comments</h1>
       <AddCommentComponent user_id={sessionUser?.id} post_id={postId} />
       <div className="comment-container">
         {comments.map(comment =>

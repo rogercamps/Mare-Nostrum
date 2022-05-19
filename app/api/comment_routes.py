@@ -1,4 +1,5 @@
 from flask import Blueprint, jsonify, request
+from flask_login import login_required
 from app.forms.comment_form import CommentForm
 from app.forms.comment_edit_form import CommentEditForm
 from app.models import Comment, db
@@ -37,6 +38,7 @@ def update_comment(id):
         comment = Comment.query.get(id)
         if comment:
             comment.comment = form.comment.data
+        db.session.add(comment)
         db.session.commit()
         return comment.to_dict()
     return  {"errors": validation_errors_to_error_messages(form.errors)},401

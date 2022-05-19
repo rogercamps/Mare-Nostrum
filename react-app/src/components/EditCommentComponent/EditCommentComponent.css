@@ -11,23 +11,42 @@
   resize: none;
 }
 
-div.update-comment > form.edit-comment-form >  div.edit-comment-errors {
+div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-errors {
   position: absolute;
-  /* height: 10px; */
-  /* background-color: red; */
+  top: -53px;
+  left: 300px;
+  z-index: 0;
+  padding: 10px 10px 16px 10px;
+  border:.9px solid rgb(185, 182, 182);
+  background-color: white;
+  width: 200px;
+  height: 117px;
 }
 
 .edit-comment-form {
   display: flex;
   /* flex-direction: column; */
 }
-div.update-comment > form.edit-comment-form >  div.edit-comment-errors > .errors {
-  position: relative;
-  padding: 10px 10px 16px 10px;
+div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-errors > .errors {
+  /* padding: 10px 10px 16px 10px;
   border:.9px solid rgb(185, 182, 182);
-  background-color: white;
-  left: 300px;
+  background-color: white; */
   height: 10px;
-  top: -62px;
-  /* background-color: green; */
+}
+
+.commnet-index-div {
+  z-index: 2;
+}
+
+.edit-comment-errors-wrapper {
+  position: relative;
+}
+
+.update-comment-button {
+  position: relative;
+  display: inline-block;
+  top: 14px;
+  border-radius: 3px;
+  height: 22px;
+  left: 5px;
 }

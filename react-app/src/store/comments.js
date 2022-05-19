@@ -52,17 +52,17 @@ export const addComment = (comment) => async dispatch => {
     return response;
 }
 
-export const editComment = (comment) => async dispatch => {
-  const response = await fetch(`/api/comments/${comment.id}`, {
+export const editComment = (comment, id) => async dispatch => {
+  const response = await fetch(`/api/comments/${id}`, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(comment)
+    body: JSON.stringify({'comment':comment})
   });
   if (response.ok) {
     const post = await response.json();
-    dispatch(updateCommentAction(comment));
+    dispatch(updateCommentAction(post));
     return post
   } else if (response.status < 500) {
     const data = await response.json();
