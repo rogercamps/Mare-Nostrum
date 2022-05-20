@@ -57,9 +57,13 @@ export const addPost = (formData) => async dispatch => {
   if (response.ok) {
     const post = await response.json();
     dispatch(addSinglePost(post));
-  } else {
-    return "ERROR @ ADD_POST"
+  } else if (response.status < 500) {
+    const data = response.json()
+    return data
   }
+  // else {
+  //   return "ERROR @ ADD_POST"
+  // }
 }
 
 export const deletePost = (postId) => async dispatch => {

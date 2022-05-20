@@ -23,7 +23,7 @@ function PostComponent() {
         <div className="feed-container">
           {posts?.map(post => (
             // <Link to={`/post/${post?.id}`} key={post.id}>
-              <li className='post-feed' >
+              <li className='post-feed' key={post.id}>
                 {/* <img src={post?.photo_url} alt=''
                 className="post-feed-img"/> */}
                 <MainModal post={post}  />

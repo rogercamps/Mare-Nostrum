@@ -10,11 +10,11 @@ import add_post_icon from '../../images/New_Post.png'
 
 const AddPostForm = () => {
 
-  const [image, setImage] = useState();
+  const [image, setImage] = useState('');
   const [caption, setCaption] = useState('');
   const [users, setUsers] = useState([]);
   const user = useSelector(state => state.session.user);
-  const [validationErrors, setValidationErrors] = useState([]);
+  // const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const history = useHistory();
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const AddPostForm = () => {
     e.preventDefault();
 
     setHasSubmitted(true);
-    if (validationErrors.length) return 'Error submitting your post'
+    // if (validationErrors.length) return 'Error submitting your post'
 
 
     // const post = {
@@ -41,8 +41,9 @@ const AddPostForm = () => {
     formData.append('caption', caption)
     dispatch(addPost(formData)).then((res) => {
       if (!res?.ok) {
-        console.log(res?.errors)
-        setErrors(res?.errors)
+        console.log(res?.errors[1].split(':')[1])
+
+        setErrors(res.errors)
       } else {
         setErrors([])
       }
@@ -50,7 +51,8 @@ const AddPostForm = () => {
 
     setCaption('');
     setImage('');
-    setValidationErrors([]);
+    setErrors([]);
+    // setValidationErrors([]);
     setHasSubmitted(false);
     history.push("/feed");
   }
@@ -60,28 +62,36 @@ const AddPostForm = () => {
     setImage(file);
   }
 
-  useEffect(() => {
-    const errors = [];
-    if (!caption.length) errors.push("Enter a valid caption");
-    setValidationErrors(errors);
-  }, [caption, image])
+  // useEffect(() => {
+  //   const errors = [];
+  //   if (!caption.length) errors.push("Enter a valid caption");
+  //   setValidationErrors(errors);
+  // }, [caption, image])
 
   return (
     <div className="add-post-form-main-div">
-      {hasSubmitted && validationErrors.length > 0 && (
-        <div className="errors-info">
-          <p>Errors: </p>
-          <ul>
-            {validationErrors.map(error => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
-        </div>
-      )}
       <Popup trigger={<img src={add_post_icon} alt="Add post" />} modal>
         <div className="modal">
           <div className="content">
             <form onSubmit={(e) => submitForm(e)}>
+              {/* {hasSubmitted && validationErrors.length > 0 && (
+                <div className="errors-info">
+                  <ul>
+                    {validationErrors.map(error => (
+                      <li key={error}>{error}</li>
+                    ))}
+                  </ul>
+                </div>
+              )} */}
+              { errors.length > 0 && (
+                <div className="errors-info">
+                  <ul>
+                    {errors.map(error => (
+                      <li key={error}>{error.split(':')[1]}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <div className="form-add-post-photo">
                 <label className="add-post-label" htmlFor="photo">
                 </label>
