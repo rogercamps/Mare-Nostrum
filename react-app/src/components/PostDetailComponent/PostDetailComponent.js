@@ -10,11 +10,13 @@ import AddCommentComponent from '../AddCommentComponent/AddCommentComponent'
 function PostDetailComponent({post, hideModal}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
-  const history = useHistory();
+  // const history = useHistory();
   // const { postId } = useParams();
   // const post = useSelector(state => state.posts[postId])
 
-  const handleDelete = (postId) => {
+  const handleDelete = (e, postId) => {
+    e.preventDefault();
+    e.stopPropagation();
     dispatch(deletePost(postId))
       // .then(() => {
       //   history.push('/feed');
@@ -39,7 +41,7 @@ function PostDetailComponent({post, hideModal}) {
                 {sessionUser?.id === post?.user_name.id && (
                   <>
                     <UpdatePostForm post={post} />
-                    <button onClick={() => handleDelete(post.id)} className="detail-delete-button">Delete post</button>
+                    <button onClick={(e) => handleDelete(e, post.id)} className="detail-delete-button">Delete post</button>
                   </>
                 )}
               </div>

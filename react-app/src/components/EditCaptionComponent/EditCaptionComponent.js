@@ -49,7 +49,6 @@ const UpdatePostForm = ({post}) => {
         </div>
       )}
       <form onSubmit={(e) => submitForm(e)}>
-        <h5>User Name: {user?.username}</h5>
         <div className="form-add-post-caption">
           <label className="add-post-label" htmlFor="caption">
             Edit caption:
