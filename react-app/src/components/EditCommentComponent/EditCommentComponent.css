@@ -60,3 +60,8 @@ div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-err
 
   width: 476px;
 }
+
+.comment-body {
+  border:.9px solid rgb(185, 182, 182);
+  padding: 5px;
+}
