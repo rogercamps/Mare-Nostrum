@@ -41,7 +41,6 @@ const UpdatePostForm = ({post}) => {
     <div className="add-post-form-main-div">
       {hasSubmitted && validationErrors.length > 0 && (
         <div className="errors-info">
-          <p>Errors: </p>
           <ul>
             {validationErrors.map(error => (
               <li key={error}>{error}</li>
