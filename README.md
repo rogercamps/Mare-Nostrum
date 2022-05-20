@@ -1,5 +1,3 @@
-![alt text](src='./images')
-
 <h1 align="center">Mare Nostrum</h1>
 
 <h5 align="center">  By:  <a href="https://github.com/rogercamps">Roger Camps</a> - <a href="https://mare-nostrum.herokuapp.com/"><i>Live site</i></h5>
