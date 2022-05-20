@@ -12,7 +12,7 @@ const MainModal = ({ post }) => {
         alt="" onClick={() => setShowModal(true)}></img>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <div>
+          <div className="detail-container-modal">
             <PostDetailComponent post={post} hideModal={() => setShowModal(false)} />
           </div>
         </Modal>

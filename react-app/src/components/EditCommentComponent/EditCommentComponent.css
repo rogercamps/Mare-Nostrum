@@ -54,13 +54,18 @@ div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-err
 
 .edit-comment-icon {
   margin-top: 20px;
+  position: relative;
+  top:-16px;
 }
 
 .comment-container {
 
-  width: 476px;
+  max-width: 476px;
+  width: auto;
   /* overflow: hidden; */
   /* overscroll-behavior: none; */
+  height: 620px;
+  overflow-y: auto;
 }
 
 .comment-body {
