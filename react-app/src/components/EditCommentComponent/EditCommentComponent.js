@@ -70,7 +70,7 @@ function EditCommentComponent({ updateComment }) {
                     const updatedComment = { ...updateComment, comment }
                     const data = await dispatch(editComment(comment, updatedComment.id))
                     if (data?.errors) {
-                      setErrors(data.errors)
+                      return setErrors(data.errors)
                     }
                     setComment('');
                     close()
