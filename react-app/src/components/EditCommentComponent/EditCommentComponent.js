@@ -50,28 +50,38 @@ function EditCommentComponent({ updateComment }) {
   return (
     <div className="update-comment">
       <div className="edit-comment-errors-wrapper">
-        <Popup trigger={<img src={comment_icon} alt="edit post" className="edit-comment-icon"/>} modal>
-        {close => (
-          <div className="modal">
-            <div className="content">
-              <form onSubmit={(e) => handleEditComment(e)} className="edit-comment-form">
-                {hasSubmitted && errors?.length > 0 && (
-                  <div className="edit-comment-errors">
-                    {errors?.map((error, ind) => (
-                      <div className="errors" key={ind}>{error}</div>
-                    ))}
-                  </div>
-                )}
-                <textarea className="comment-edit-textarea" value={comment} onChange={(e) => setComment(e.target.value)}
-                />
-                <button onClick={close} type="submit" className="update-comment-button">update comment</button>
-              </form>
+        <Popup trigger={<img src={comment_icon} alt="edit post" className="edit-comment-icon" />} modal>
+          {close => (
+            <div className="modal">
+              <div className="content">
+                <form onSubmit={(e) => handleEditComment(e)} className="edit-comment-form">
+                  {hasSubmitted && errors?.length > 0 && (
+                    <div className="edit-comment-errors">
+                      {errors?.map((error, ind) => (
+                        <div className="errors" key={ind}>{error}</div>
+                      ))}
+                    </div>
+                  )}
+                  <textarea className="comment-edit-textarea" value={comment} onChange={(e) => setComment(e.target.value)}
+                  />
+                  <button onClick={async (e) => {
+                    e.preventDefault()
+                    setHasSubmitted(true)
+                    const updatedComment = { ...updateComment, comment }
+                    const data = await dispatch(editComment(comment, updatedComment.id))
+                    if (data?.errors) {
+                      setErrors(data.errors)
+                    }
+                    setComment('');
+                    close()
+                  }} type="submit" className="update-comment-button">update</button>
+                </form>
+              </div>
             </div>
-          </div>
-        )}
+          )}
         </Popup>
-      </div>
-    </div>
+      </div >
+    </div >
 
   )
 }
