@@ -46,9 +46,9 @@ const SplashPage = () => {
             <img src={ig_splash1} className="splash-image" alt="slideshow 1" />
           </div>
           <div className="login-signup-div">
-          <div className="splash-logo-div">
-            <img src={marenostrum_logo} className="splash-logo" alt="logo" />
-          </div>
+            <div className="splash-logo-div">
+              <img src={marenostrum_logo} className="splash-logo" alt="logo" />
+            </div>
             <Popup trigger={<button className="splash-btn">Login</button>} modal>
               <div className="modal">
                 <div className="content">
@@ -64,7 +64,21 @@ const SplashPage = () => {
               </div>
             </Popup>
             <button className="btn-demo splash-btn" onClick={demoUser}>Demo user</button>
+            <div>
+              <p>
+                This ocean themed app, is an Instagram inspired project to showcase my learnings at <a href="http://appacademy.io" target="_blank" rel="noopener noreferrer">App Academy</a>.
+              </p>
+              <p>
+                Mare Nostrum, from the latin "our sea", was the name the Romans gave the Mediterranean. This is the sea I grew up with and made me develop the love for all seas.
+              </p>
+            </div>
           </div>
+        </section>
+        <section>
+          {/* <h5>
+          This ocean themed app, is an Instagram inspired project to showcase my learnings at <a href="http://appacademy.io">App Academy</a>.
+          Mare Nostrum, from the latin "our sea" was the name the Romans gave the Mediterranean. This is the ocean I grew up with and made me develop the love for all seas.
+          </h5> */}
         </section>
       </div>
       <div className="foot-div">

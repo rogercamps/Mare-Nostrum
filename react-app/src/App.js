@@ -53,9 +53,9 @@ function App() {
         <ProtectedRoute path='/feed' exact={true} >
           <PostComponent />
         </ProtectedRoute>
-        <ProtectedRoute path='/post/:postId' exact={true} >
+        {/* <ProtectedRoute path='/post/:postId' exact={true} >
           <PostDetailComponent />
-        </ProtectedRoute>
+        </ProtectedRoute> */}
       </Switch>
     </BrowserRouter>
   );

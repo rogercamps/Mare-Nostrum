@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import { getPosts } from '../../store/posts';
 import './PostComponent.css'
+import MainModal from '../MainModal/MainModal'
 // import EditCommentComponent from '../EditCommentComponent/EditCommentComponent';
 
 function PostComponent() {
@@ -21,13 +22,15 @@ function PostComponent() {
       <ul className="post-feed-ul">
         <div className="feed-container">
           {posts?.map(post => (
-            <Link to={`/post/${post?.id}`} key={post.id}>
+            // <Link to={`/post/${post?.id}`} key={post.id}>
               <li className='post-feed' >
-                <img src={post?.photo_url} alt='' className="post-feed-img"/>
+                {/* <img src={post?.photo_url} alt=''
+                className="post-feed-img"/> */}
+                <MainModal post={post}  />
                 <span className="post-caption">{post?.caption}</span>
               {/* <EditCommentComponent updateComment={comment} /> */}
               </li>
-            </Link>
+            // </Link>
           ))}
         </div>
       </ul>

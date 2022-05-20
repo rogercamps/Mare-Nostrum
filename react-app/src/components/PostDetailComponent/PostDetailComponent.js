@@ -7,18 +7,18 @@ import UpdatePostForm from '../EditCaptionComponent/EditCaptionComponent'
 import CommentsComponent from '../CommentsComponent/CommentsComponent'
 import AddCommentComponent from '../AddCommentComponent/AddCommentComponent'
 
-function PostDetailComponent() {
+function PostDetailComponent({post, hideModal}) {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const history = useHistory();
-  const { postId } = useParams();
-  const post = useSelector(state => state.posts[postId])
+  // const { postId } = useParams();
+  // const post = useSelector(state => state.posts[postId])
 
   const handleDelete = (postId) => {
     dispatch(deletePost(postId))
-      .then(() => {
-        history.push('/feed');
-      })
+      // .then(() => {
+      //   history.push('/feed');
+      // })
   }
 
   useEffect(() => {
@@ -39,14 +39,14 @@ function PostDetailComponent() {
                 {sessionUser?.id === post?.user_name.id && (
                   <>
                     <UpdatePostForm post={post} />
-                    <button onClick={() => handleDelete(postId)} className="detail-delete-button">Delete post</button>
+                    <button onClick={() => handleDelete(post.id)} className="detail-delete-button">Delete post</button>
                   </>
                 )}
               </div>
             </>
           }
-          <div className="post-detail-details detail-container">
-            <CommentsComponent className="post-detail-div" postId={postId} />
+          <div className="post-detail-details">
+            <CommentsComponent className="post-detail-div" postId={post.id} />
           </div>
           {/* <AddCommentComponent user_id={sessionUser.id} post_id={postId} /> */}
         </div>

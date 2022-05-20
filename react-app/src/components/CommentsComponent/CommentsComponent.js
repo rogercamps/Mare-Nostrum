@@ -35,10 +35,12 @@ function CommentsComponent({ postId }) {
             <div className="comment-body">
               {comment?.comment}
             </div>
-            <div className="comments-components">
-              <EditCommentComponent updateComment={comment} className="update-comment-component" />
-              <DeleteCommentComponent deletedComment={comment} className="deleted-comment-component" />
-            </div>
+            {sessionUser && sessionUser.id === comment.user_id &&
+              < div className="comments-components">
+                <EditCommentComponent updateComment={comment} className="update-comment-component" />
+                <DeleteCommentComponent deletedComment={comment} className="deleted-comment-component" />
+              </div>
+            }
           </div>
         )}
       </div>

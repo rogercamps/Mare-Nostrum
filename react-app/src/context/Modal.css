@@ -15,12 +15,16 @@
   right: 0;
   left: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.9);
 }
 
 #modal-content {
+  height: 90vh;
+  width: 70vw;
   position: absolute;
-  background-color:white;
-  height: 800;
-  width: 800;
+  background-color: #cccccc;
+  padding: 3px;
+  border-radius: 2px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  margin: auto;
 }
