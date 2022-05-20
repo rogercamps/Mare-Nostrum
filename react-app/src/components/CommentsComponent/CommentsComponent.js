@@ -35,8 +35,10 @@ function CommentsComponent({ postId }) {
             <div className="comment-body">
               {comment?.comment}
             </div>
-            <EditCommentComponent updateComment={comment} />
-            <DeleteCommentComponent deletedComment={comment} />
+            <div className="comments-components">
+              <EditCommentComponent updateComment={comment} className="update-comment-component" />
+              <DeleteCommentComponent deletedComment={comment} className="deleted-comment-component" />
+            </div>
           </div>
         )}
       </div>

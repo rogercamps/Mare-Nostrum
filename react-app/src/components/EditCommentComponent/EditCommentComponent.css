@@ -36,6 +36,7 @@ div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-err
 
 .commnet-index-div {
   z-index: 2;
+  height: 20px;
 }
 
 .edit-comment-errors-wrapper {
@@ -45,8 +46,17 @@ div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-err
 .update-comment-button {
   position: relative;
   display: inline-block;
-  top: 14px;
+  top: 24px;
   border-radius: 3px;
-  height: 22px;
+  height: 34px;
   left: 5px;
+}
+
+.edit-comment-icon {
+  margin-top: 20px;
+}
+
+.comment-container {
+
+  width: 476px;
 }

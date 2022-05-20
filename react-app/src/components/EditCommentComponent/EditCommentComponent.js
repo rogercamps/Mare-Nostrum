@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { editComment } from '../../store/comments'
 import './EditCommentComponent.css';
+import Popup from 'reactjs-popup';
+import comment_icon from '../../images/ig_comment.png'
 
 function EditCommentComponent({ updateComment }) {
   const dispatch = useDispatch();
@@ -41,25 +43,31 @@ function EditCommentComponent({ updateComment }) {
   }
 
 
-  // useEffect(() => {
-  //   setErrors([]);
-  // }, [comment])
+  useEffect(() => {
+    setErrors([]);
+  }, [comment])
 
   return (
     <div className="update-comment">
       <div className="edit-comment-errors-wrapper">
-        <form onSubmit={(e) => handleEditComment(e)} className="edit-comment-form">
-          {hasSubmitted && (
-            <div className="edit-comment-errors">
-              {errors?.length > 0 && errors?.map((error, ind) => (
-                <div className="errors" key={ind}>{error}</div>
-              ))}
+        <Popup trigger={<img src={comment_icon} alt="edit post" className="edit-comment-icon"/>} modal>
+          <div className="modal">
+            <div className="content">
+              <form onSubmit={(e) => handleEditComment(e)} className="edit-comment-form">
+                {hasSubmitted && errors?.length > 0 && (
+                  <div className="edit-comment-errors">
+                    {errors?.map((error, ind) => (
+                      <div className="errors" key={ind}>{error}</div>
+                    ))}
+                  </div>
+                )}
+                <textarea className="comment-edit-textarea" value={comment} onChange={(e) => setComment(e.target.value)}
+                />
+                <button type="submit" className="update-comment-button">update comment</button>
+              </form>
             </div>
-          )}
-          <textarea className="comment-edit-textarea" value={comment} onChange={(e) => setComment(e.target.value)}
-          />
-          <button type="submit" className="update-comment-button">update comment</button>
-        </form>
+          </div>
+        </Popup>
       </div>
     </div>
   )

@@ -5,5 +5,6 @@
 }
 
 .comment-textarea {
+  height: 17px;
   resize: none;
 }

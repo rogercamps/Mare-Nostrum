@@ -3,4 +3,23 @@
   margin: 10px;
   background-color: white;
   border:.9px solid   #cccccc;
+  height: 20px;
+}
+
+.comments-components {
+  display: flex;
+  flex-direction: column;
+}
+
+.update-comment-component {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.deleted-comment-component{
+  background-color:red;
+  display: flex;
+  flex-direction: column;
 }

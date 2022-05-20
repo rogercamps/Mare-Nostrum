@@ -29,6 +29,7 @@
   margin: 15px;
   /* height: 400px; */
   width: 450px;
+  background-color: white;
 }
 
 .post-detail-div > div:nth-child(3) {
@@ -53,4 +54,9 @@
 
 .detail-delete-button {
   margin-bottom: 15px;
+}
+
+.add-post-input {
+  background-color: #cccccc;
+  border-radius: 5px;
 }
