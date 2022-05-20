@@ -19,17 +19,29 @@
   /* background-color: red; */
 
 }
-.post-detail-div {
 
+/* left side of detail popup */
+.post-detail-div {
+  /* overflow-y: auto; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   border:.9px solid   #cccccc;
   margin: 15px;
-  /* height: 400px; */
-  width: 450px;
+  height: 630px;
+  width: 560px;
   background-color: white;
+}
+
+/* right side of detail popup */
+/* .post-detail-details {
+  height: 400px;
+  overflow-y: auto;
+} */
+.comment-container {
+  height: 620px;
+  overflow-y: auto;
 }
 
 .post-detail-div > div:nth-child(3) {
@@ -54,6 +66,12 @@
 
 .detail-delete-button {
   margin-bottom: 15px;
+  background-color: red;
+  color: white;
+  position: relative;
+  top:-27px;
+  left: 75px;;
+
 }
 
 .add-post-input {

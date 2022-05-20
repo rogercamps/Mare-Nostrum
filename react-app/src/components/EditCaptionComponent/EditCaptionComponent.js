@@ -62,7 +62,7 @@ const UpdatePostForm = ({post}) => {
             onChange={(e) => setCaption(e.target.value)}
           />
         </div>
-        <button className="button">Submit</button>
+        <button className="edit-post-button">Submit</button>
       </form>
     </div>
   )

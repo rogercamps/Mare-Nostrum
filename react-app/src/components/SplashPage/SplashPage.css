@@ -45,7 +45,12 @@
 .splash-logo-div {
   display: flex;
   justify-content: flex-start;
-  margin-bottom: 35px;
+  margin-bottom: 3px;
+  height: 100px;
+}
+
+.splash-logo {
+  /* top: 100px; */
 }
 
 .splash-btn {

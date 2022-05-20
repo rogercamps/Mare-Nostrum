@@ -1,4 +1,4 @@
-# Mare Nostrum
+![alt text](src='./images')
 
 <h1 align="center">Mare Nostrum</h1>
 
@@ -6,9 +6,12 @@
 
 ### Table of Contents
 - [Main purpose](#main)
+This ocean themed app, is an Instagram inspired project to showcase my learnings at App Academy.
+
+Mare Nostrum, from the latin "our sea", was the name the Romans gave the Mediterranean. This is the sea I grew up with and made me develop the love for all seas.
 - [Posts](#posts)
 - [Comments](#comments)
-- [Conclusion](#conclusion)
+<!-- - [Conclusion](#conclusion) -->
 
 ## Main
 
@@ -31,7 +34,7 @@
 #### How to use this application
 
 ## Posts
-
+A user is able to add posts of images with a caption, edit the post by updating the caption.
 ## Comments
-
-## Conclusion
+Users are able to add comments, update them and delete their own comments
+<!-- ## Conclusion -->

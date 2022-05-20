@@ -41,7 +41,7 @@ const AddPostForm = () => {
     formData.append('caption', caption)
     dispatch(addPost(formData)).then((res) => {
       if (!res?.ok) {
-        console.log(res?.errors[1].split(':')[1])
+        // console.log(res?.errors[1].split(':')[1])
 
         setErrors(res.errors)
       } else {
@@ -71,52 +71,46 @@ const AddPostForm = () => {
   return (
     <div className="add-post-form-main-div">
       <Popup trigger={<img src={add_post_icon} alt="Add post" />} modal>
-        <div className="modal">
-          <div className="content">
-            <form onSubmit={(e) => submitForm(e)}>
-              {/* {hasSubmitted && validationErrors.length > 0 && (
-                <div className="errors-info">
-                  <ul>
-                    {validationErrors.map(error => (
-                      <li key={error}>{error}</li>
-                    ))}
-                  </ul>
+        {close => (
+          <div className="modal">
+            <div className="content">
+              <form className="add-post-form" onSubmit={(e) => submitForm(e)}>
+                {errors.length > 0 && (
+                  <div className="errors-info">
+                    <ul>
+                      {errors.map(error => (
+                        <li key={error}>{error.split(':')[1]}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                <div className="form-add-post-photo">
+                  <label className="add-post-label" htmlFor="photo">
+                  </label>
+                  <input
+                    className="add-post-input"
+                    type="file"
+                    accept="image/*"
+                    onChange={updateImage}
+                  />
                 </div>
-              )} */}
-              { errors.length > 0 && (
-                <div className="errors-info">
-                  <ul>
-                    {errors.map(error => (
-                      <li key={error}>{error.split(':')[1]}</li>
-                    ))}
-                  </ul>
+                <div className="form-add-post-caption">
+                  <label className="add-post-label" htmlFor="caption">
+                    Add a caption:
+                  </label>
+                  <input
+                    className="add-post-input"
+                    type="text"
+                    value={caption}
+                    onChange={(e) => setCaption(e.target.value)}
+                  />
                 </div>
-              )}
-              <div className="form-add-post-photo">
-                <label className="add-post-label" htmlFor="photo">
-                </label>
-                <input
-                  className="add-post-input"
-                  type="file"
-                  accept="image/*"
-                  onChange={updateImage}
-                />
-              </div>
-              <div className="form-add-post-caption">
-                <label className="add-post-label" htmlFor="caption">
-                  Add a caption:
-                </label>
-                <input
-                  className="add-post-input"
-                  type="text"
-                  value={caption}
-                  onChange={(e) => setCaption(e.target.value)}
-                />
-              </div>
-              <button className="button">Submit</button>
-            </form>
+                <button onClick={close} className="button">Submit</button>
+              </form>
+
+            </div>
           </div>
-        </div>
+        )}
       </Popup>
 
     </div>

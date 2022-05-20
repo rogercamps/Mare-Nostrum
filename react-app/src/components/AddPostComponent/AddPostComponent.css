@@ -1,0 +1,13 @@
+.add-post-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-add-post-caption {
+
+  margin: 10px;
+}
+
+/* .form-add-post-image {
+
+} */

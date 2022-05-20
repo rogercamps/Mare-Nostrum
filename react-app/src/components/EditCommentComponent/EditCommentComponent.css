@@ -59,6 +59,8 @@ div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-err
 .comment-container {
 
   width: 476px;
+  /* overflow: hidden; */
+  /* overscroll-behavior: none; */
 }
 
 .comment-body {

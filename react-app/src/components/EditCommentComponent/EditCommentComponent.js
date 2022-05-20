@@ -51,6 +51,7 @@ function EditCommentComponent({ updateComment }) {
     <div className="update-comment">
       <div className="edit-comment-errors-wrapper">
         <Popup trigger={<img src={comment_icon} alt="edit post" className="edit-comment-icon"/>} modal>
+        {close => (
           <div className="modal">
             <div className="content">
               <form onSubmit={(e) => handleEditComment(e)} className="edit-comment-form">
@@ -63,13 +64,15 @@ function EditCommentComponent({ updateComment }) {
                 )}
                 <textarea className="comment-edit-textarea" value={comment} onChange={(e) => setComment(e.target.value)}
                 />
-                <button type="submit" className="update-comment-button">update comment</button>
+                <button onClick={close} type="submit" className="update-comment-button">update comment</button>
               </form>
             </div>
           </div>
+        )}
         </Popup>
       </div>
     </div>
+
   )
 }
 
