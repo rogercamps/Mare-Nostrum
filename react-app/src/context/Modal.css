@@ -19,8 +19,8 @@
 }
 
 #modal-content {
-  height: 90vh;
-  width: 70vw;
+  /* height: 90vh; */
+  /* width: 60vw; */
   position: absolute;
   background-color: #cccccc;
   padding: 3px;

@@ -6,10 +6,10 @@
 }
 
 .detail-container {
-  display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vw;
+  width: 100vw; */
 }
 .detail-nested-container {
   display: flex;
@@ -29,17 +29,17 @@
   justify-content: center;
   border:.9px solid   #cccccc;
   margin: 15px;
+  /* height: 630px; */
   height: 630px;
-  max-width: 560px;
-  width:auto;
+  width: 560px;
+  /* width: 100%; */
   background-color: white;
 }
 
 /* right side of detail popup */
-/* .post-detail-details {
-  height: 400px;
-  overflow-y: auto;
-} */
+.post-detail-details {
+  width: 560px;
+}
 
 .post-detail-div > div:nth-child(3) {
   padding: 15px;
