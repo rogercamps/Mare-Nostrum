@@ -2,7 +2,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import AddPostForm from './AddPostComponent/AddPostComponent'
+import AddPostModal from './AddPostComponent/AddPostModal'
 import { useSelector, useDispatch } from 'react-redux';
 import logo from '../images/mare-nostrum-logo.png'
 import home_logo from '../images/Home.png'
@@ -35,7 +35,7 @@ const NavBar = () => {
                 <p><img src={profile_icon} alt="profile" /><span className="nav-username">{sessionUser?.username}</span></p>
               </li>
               <li>
-                <AddPostForm />
+                <AddPostModal />
               </li>
               <li className="nav-item" id="navbar-logout-button">
                 <LogoutButton />
