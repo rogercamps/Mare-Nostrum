@@ -1,13 +1,41 @@
 .add-post-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
-.form-add-post-caption {
+/* .add-post-modal-box {
+  display:flex;
+  align-items: center;
+  height: 100px;
+  width: 100px;
+} */
 
+.form-add-post-caption {
   margin: 10px;
 }
 
 /* .form-add-post-image {
 
 } */
+
+/* ::-webkit-file-upload-button {
+  position: relative;
+  background-color: rgba(0, 0, 0, 0);
+  border: #32363f00;
+  width: .1px;
+  color: #32363f00;
+} */
+
+::-webkit-file-upload-button {
+  background-color: transparent;
+  border: 1px solid #dbdbdb;
+  border: 1px solid rgba(var(--ca6,219,219,219),1);
+  color: #262626;
+  color: rgba(var(--f75,38,38,38),1);
+  border-radius: 4px;
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  padding: 5px 9px;
+}

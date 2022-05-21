@@ -29,6 +29,8 @@ button {
   border-radius: 4px;
   padding: 4px;
   outline: none;
+  background-color:#3196F6;
+
 }
 
 button:hover {

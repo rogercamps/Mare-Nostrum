@@ -12,8 +12,8 @@ const AddPostModal = () => {
         nested>
         {close => (
           <div className="modal">
-            <div className="header"> Add Post: </div>
-            <div className="content">
+            <div className="header"> Add Post </div>
+            <div className="content add-post-modal-box">
               <AddPostComponent close={close} />
             </div>
           </div>
