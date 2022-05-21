@@ -75,7 +75,7 @@ const AddPostForm = () => {
           <div className="modal">
             <div className="content">
               <form className="add-post-form" onSubmit={(e) => submitForm(e)}>
-                {errors.length > 0 && (
+                {errors?.length > 0 && (
                   <div className="errors-info">
                     <ul>
                       {errors.map(error => (
@@ -105,11 +105,12 @@ const AddPostForm = () => {
                     onChange={(e) => setCaption(e.target.value)}
                   />
                 </div>
-                <button onClick={close} className="button">Submit</button>
+                <button onClick={close} type="submit" className="button">Submit</button>
               </form>
 
             </div>
           </div>
+
         )}
       </Popup>
 

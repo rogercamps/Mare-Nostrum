@@ -57,6 +57,7 @@ export const addPost = (formData) => async dispatch => {
   if (response.ok) {
     const post = await response.json();
     dispatch(addSinglePost(post));
+    return post
   } else if (response.status < 500) {
     const data = response.json()
     return data
