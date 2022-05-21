@@ -21,7 +21,7 @@ function PostComponent() {
     <>
       <ul className="post-feed-ul">
         <div className="feed-container">
-          {posts?.map(post => (
+          {posts?.sort((post1, post2) => post2?.id - post1?.id).map(post => (
             // <Link to={`/post/${post?.id}`} key={post.id}>
               <li className='post-feed' key={post.id}>
                 {/* <img src={post?.photo_url} alt=''
