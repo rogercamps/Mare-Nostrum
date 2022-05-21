@@ -33,7 +33,6 @@ const AddPostForm = ({close}) => {
 
     const res = await dispatch(addPost(formData))
     if (res?.errors) {
-      console.log('res errors-------------------', res.errors);
       return setErrors(res.errors)
     }
     setHasSubmitted(false);

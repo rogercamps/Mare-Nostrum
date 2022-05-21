@@ -36,13 +36,14 @@ def new_post():
     form = AddPost()
     form['csrf_token'].data = request.cookies['csrf_token']
     if form.validate_on_submit():
-        # if "image" not in request.files:
-        #     return {"errors": ["image required"]}, 400
+        if "image" not in request.files:
+            return {"errors": [":- Image required"]}, 400
 
         image = request.files["image"]
 
         if not allowed_file(image.filename):
-            return {"errors": "file type not permitted"}, 400
+            return {"errors": [":- File type not permitted"]}, 400
+
 
         image.filename = get_unique_filename(image.filename)
 
