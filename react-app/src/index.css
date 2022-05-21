@@ -17,13 +17,14 @@ body {
   padding:15px;
   margin: 5px;
 }
-/* form {
+form {
   display: flex;
   align-items: center;
   flex-direction: column;
 
   padding: 13px;
-} */
+}
+
 button {
   cursor: pointer;
   border-radius: 4px;
@@ -116,10 +117,26 @@ a:hover {
   padding: 5px;
 }
 .modal > .content {
+  /* display: flex; */
+
   padding: 10px 5px;
   border:.9px solid black;
   padding: 15%;
+
 }
+
+.modal > .content > form {
+  /* width:100px; */
+  padding: 10px;
+}
+
+.modal > .content > form > input {
+
+}
+.modal > .content > form > label {
+  margin: 10px;
+}
+
 .modal > .actions {
   /* width: 100%; */
   padding: 10px 5px;
@@ -155,3 +172,14 @@ a:hover {
   align-items: center;
 
 } */
+
+.signup-form {
+  background-color: red;
+}
+
+.signup-modal-form > input {
+  margin:10px;
+  left: 100px;
+  /* display: flex; */
+  /* flex-direction: row; */
+}
