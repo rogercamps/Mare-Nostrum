@@ -46,7 +46,7 @@ const LoginForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div>
+      <div className="signup-modal-form">
         <label htmlFor='email'>Email</label>
         <input
           name='email'
@@ -56,7 +56,7 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
       </div>
-      <div>
+      <div className="signup-modal-form">
         <label htmlFor='password'>Password</label>
         <input
           name='password'
@@ -65,7 +65,7 @@ const LoginForm = () => {
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
+        <button className="signup-modal-form signup-modal-form-button" type='submit'>Login</button>
         {/* <button className="btn-demo" onClick={demoUser}>Demo</button> */}
       </div>
     </form>

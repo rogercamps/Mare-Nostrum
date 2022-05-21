@@ -180,6 +180,12 @@ a:hover {
 .signup-modal-form > input {
   margin:10px;
   left: 100px;
-  /* display: flex; */
-  /* flex-direction: row; */
+  display: flex;
+  flex-direction: column;
+  /* position:relative; */
+}
+
+.signup-modal-form-button {
+  position:relative;
+  left: 61px;
 }
