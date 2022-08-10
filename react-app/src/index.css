@@ -16,6 +16,7 @@ body {
 .errors {
   padding:15px;
   margin: 5px;
+  /* color: red; */
 }
 form {
   display: flex;
@@ -188,4 +189,11 @@ a:hover {
 .signup-modal-form-button {
   position:relative;
   left: 61px;
+}
+
+.login-errors {
+  color: red;
+}
+.signup-errors {
+  color: red;
 }

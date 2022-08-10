@@ -39,3 +39,7 @@ li {
 .post-caption {
   margin: 15px;
 }
+
+.errors-info {
+  color: red;
+}

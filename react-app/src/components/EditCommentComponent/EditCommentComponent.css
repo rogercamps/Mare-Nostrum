@@ -59,7 +59,6 @@ div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-err
 }
 
 .comment-container {
-
   max-width: 476px;
   width: auto;
   /* overflow: hidden; */
@@ -71,4 +70,5 @@ div.edit-comment-errors-wrapper > form.edit-comment-form >  div.edit-comment-err
 .comment-body {
   border:.9px solid rgb(185, 182, 182);
   padding: 5px;
+  word-break: break-word;
 }
